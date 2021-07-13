@@ -1,34 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- Please update value in the {}  -->
 
-## Getting Started
+<h1 align="center">Country quiz</h1>
 
-First, run the development server:
+<div align="center">
+   Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
+</div>
+
+<div align="center">
+  <h3>
+    <!-- <a href="https://{your-demo-link.your-domain}">
+      Demo
+    </a>
+    <span> | </span> -->
+    <!-- <a href="https://{your-url-to-the-solution}">
+      Solution
+    </a>
+    <span> | </span> -->
+    <a href="https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8">
+      Challenge
+    </a>
+  </h3>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Overview](#overview)
+  - [Built With](#built-with)
+- [Features](#features)
+- [How To Use](#how-to-use)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
+
+<!-- OVERVIEW -->
+
+## Overview
+
+<!-- ![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png) -->
+
+(※in preparation)
+
+### Built With
+
+<!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
+Base
+- [Node.js](https://nodejs.org/)：14.17.3
+- [TypeScript](https://www.typescriptlang.org/)：4.3.5
+- [React](https://reactjs.org/)：17.0.2
+- [Next.js](https://nextjs.org/)：11.0.1
+
+Other major libraries
+- [emotion](https://emotion.sh/)
+
+## Features
+
+<!-- List the features of your application or follow the template. Don't share the figma file here :) -->
+
+This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories.
+
+- [] User story: I can see at least 2 types of questions: a city is the capital of.. or a flag belong to country..
+- [] User story: I can see select an answer
+- [] User story: I can see if my answer is correct or incorrect
+- [] User story: When I answer correctly, I can move on to the next question
+- [] User story: When I answer incorrectly, I can see my results and try again
+- [] User story: I can try again
+
+## How To Use
+
+<!-- Example: -->
+
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [yarn](https://yarnpkg.com/)) installed on your computer. From your command line:
 
 ```bash
-npm run dev
-# or
-yarn dev
+# Clone this repository
+$ git clone git@github.com:h-yoshikawa44/country-quiz.git
+or
+$ git clone https://github.com/h-yoshikawa44/country-quiz.git
+
+# Install dependencies
+$ yarn install
+
+# Run the app
+$ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Acknowledgements
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+(※in preparation)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Contact
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Website：[h-yoshikawa44.com](https://h-yoshikawa44.com)
+- GitHub：[@h-yoshikawa44](https://github.com/h-yoshikawa44)
+- Twitter：[@yoshi44_lion](https://twitter.com/yoshi44_lion)
