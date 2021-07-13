@@ -1,6 +1,10 @@
 {
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
   },
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -23,4 +27,5 @@
     "editor.formatOnSave": true
   },
   "eslint.packageManager": "yarn",
+  "stylelint.syntax": "css-in-js"
 }
