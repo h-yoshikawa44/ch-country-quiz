@@ -3,9 +3,9 @@ import { css } from '@emotion/react';
 
 type Props = ComponentPropsWithRef<'header'>;
 
-const Header: VFC<Props> = () => {
+const Header: VFC<Props> = ({ ...props }) => {
   return (
-    <header>
+    <header {...props}>
       <h1 css={headerText}>Country quiz</h1>
     </header>
   );

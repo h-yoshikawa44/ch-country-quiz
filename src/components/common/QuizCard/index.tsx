@@ -21,7 +21,7 @@ const image = css`
 
   &::before {
     position: absolute;
-    top: -25%;
+    top: -72px;
     right: 0;
     content: url('/undraw_adventure.svg');
   }

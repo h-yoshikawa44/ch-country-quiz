@@ -4,8 +4,12 @@ import { createDarkenColor } from '@/util/color';
 
 type Props = ComponentPropsWithRef<'button'>;
 
-const Button: FC<Props> = ({ children }) => {
-  return <button css={button}>{children}</button>;
+const Button: FC<Props> = ({ children, ...props }) => {
+  return (
+    <button css={button} {...props}>
+      {children}
+    </button>
+  );
 };
 
 const button = css`
