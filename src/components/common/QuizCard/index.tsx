@@ -10,7 +10,8 @@ const QuizCard: FC<Props> = ({ isImage = false, children }) => {
 };
 
 const card = css`
-  padding: 64px 32px;
+  min-width: 480px;
+  padding: 64px 32px 32px;
   background-color: #fff;
   border-radius: 24px;
 `;
@@ -20,7 +21,7 @@ const image = css`
 
   &::before {
     position: absolute;
-    top: -50%;
+    top: -25%;
     right: 0;
     content: url('/undraw_adventure.svg');
   }

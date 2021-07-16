@@ -5,21 +5,11 @@ type Props = ComponentPropsWithRef<'header'>;
 
 const Header: VFC<Props> = () => {
   return (
-    <header css={headerContainer}>
+    <header>
       <h1 css={headerText}>Country quiz</h1>
     </header>
   );
 };
-
-const headerContainer = css`
-  max-width: 600px;
-  padding: 0 4%;
-  margin: 0 auto;
-
-  @media (max-width: 600px) {
-    padding: 0 8%;
-  }
-`;
 
 const headerText = css`
   font-family: Poppins, sans-serif;

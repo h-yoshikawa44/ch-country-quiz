@@ -19,8 +19,10 @@ const Layout: FC<Props> = ({ pageName, children }) => {
         <title>{title}</title>
         <meta name="description" content={content} />
       </Head>
-      <Header css={customHeader} />
-      <div css={[container, contents]}>{children}</div>
+      <div css={[container, contents]}>
+        <Header css={customHeader} />
+        <div>{children}</div>
+      </div>
       <Footer css={customFooter} />
     </div>
   );
@@ -28,7 +30,8 @@ const Layout: FC<Props> = ({ pageName, children }) => {
 
 const globalLayout = css`
   display: grid;
-  grid-template: 'header' auto 'contents' 1fr 'footer' auto/100%;
+  grid-template: 'contents' 1fr 'footer' auto/100%;
+  align-items: center;
   min-height: 100vh;
   background-image: url('/background.png');
   background-position: center center;
@@ -36,7 +39,7 @@ const globalLayout = css`
 `;
 
 const container = css`
-  min-width: 600px;
+  max-width: 600px;
   padding: 0 4%;
   margin: 0 auto;
 
