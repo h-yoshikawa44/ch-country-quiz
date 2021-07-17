@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Image from 'next/image';
 import Layout from '@/components/Layout';
 import { useState } from 'react';
 import AnswerButton from '@/components/AnswerButton';
@@ -42,7 +43,7 @@ const data = [
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [quizMode, serQuizmode] = useState<QuizMode>('question');
+  const [quizMode, serQuizmode] = useState<QuizMode>('result');
   const [myAnswer, setMyAnswer] = useState<MyAnswer>({
     correctCount: 0,
     answers: [],
@@ -51,45 +52,98 @@ const Quiz = () => {
   return (
     <Layout>
       <main>
-        <QuizCard isImage>
-          <div>
-            <p css={cardText}>{data[currentQuestion]?.question}</p>
-            <ul css={answerGridList}>
-              {data[currentQuestion]?.answers.map((answer) => {
-                let answerStatus;
-                if (answer.isCorrect) {
-                  answerStatus = 'correct';
-                } else if (
-                  myAnswer.answers[currentQuestion]?.text === answer.text
-                ) {
-                  answerStatus = 'wrong';
-                } else {
-                  answerStatus = 'none';
-                }
-                return (
-                  <li key={`${answer.headText}-${answer.text}`}>
-                    <AnswerButton
-                      headText={answer.headText}
-                      quizMode={quizMode}
-                      answerStatus={answerStatus}
-                    >
-                      {answer.text}
-                    </AnswerButton>
-                  </li>
-                );
-              })}
-              {quizMode === 'solution' && (
-                <div css={alignRight}>
-                  <Button>Next</Button>
-                </div>
-              )}
-            </ul>
-          </div>
+        <QuizCard isImage={quizMode !== 'result'}>
+          {quizMode === 'result' ? (
+            <div css={resultsGrid}>
+              <div css={resultsImageBox}>
+                <Image src="/undraw_winners.svg" alt="" layout="fill" />
+              </div>
+              <div css={resultsTextAlignCenter}>
+                <p css={resultsTitle}>Results</p>
+                <p css={resultsText}>
+                  You got <span css={resultsCount}>4</span> correct answers
+                </p>
+              </div>
+              <Button variant="outlined">Try again</Button>
+            </div>
+          ) : (
+            <div>
+              <p css={cardText}>{data[currentQuestion]?.question}</p>
+              <ul css={answerGridList}>
+                {data[currentQuestion]?.answers.map((answer) => {
+                  let answerStatus;
+                  if (answer.isCorrect) {
+                    answerStatus = 'correct';
+                  } else if (
+                    myAnswer.answers[currentQuestion]?.text === answer.text
+                  ) {
+                    answerStatus = 'wrong';
+                  } else {
+                    answerStatus = 'none';
+                  }
+                  return (
+                    <li key={`${answer.headText}-${answer.text}`}>
+                      <AnswerButton
+                        headText={answer.headText}
+                        quizMode={quizMode}
+                        answerStatus={answerStatus}
+                      >
+                        {answer.text}
+                      </AnswerButton>
+                    </li>
+                  );
+                })}
+                {quizMode === 'solution' && (
+                  <div css={alignRight}>
+                    <Button>Next</Button>
+                  </div>
+                )}
+              </ul>
+            </div>
+          )}
         </QuizCard>
       </main>
     </Layout>
   );
 };
+
+const resultsGrid = css`
+  display: grid;
+  row-gap: 56px;
+  justify-content: center;
+`;
+
+const resultsImageBox = css`
+  position: relative;
+  width: 240px;
+  height: 128px;
+`;
+
+const resultsTextAlignCenter = css`
+  text-align: center;
+`;
+
+const resultsTitle = css`
+  font-family: Poppins, sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 72px;
+  color: #1d355d;
+`;
+
+const resultsText = css`
+  font-family: Poppins, sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 27px;
+`;
+
+const resultsCount = css`
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 54px;
+  color: #60bf88;
+`;
 
 const answerGridList = css`
   display: grid;
