@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@emotion-icons/material-rounded": "^3.14.0",
-    "@emotion/react": "^11.4.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "csx": "^10.0.2",
     "focus-visible": "^5.2.0",
     "modern-css-reset": "^1.4.0",
@@ -28,13 +28,13 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/core": "^7.16.7",
     "@emotion/babel-preset-css-prop": "^11.2.0",
-    "@types/babel__core": "^7.1.15",
+    "@types/babel__core": "^7.1.18",
     "@types/eslint": "7.28.0",
     "@types/prettier": "^2.3.2",
-    "@types/react": "^17.0.14",
-    "@types/react-dom": "17.0.2",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "@types/stylelint": "^13.13.1",
     "eslint": "7.30.0",
     "eslint-config-next": "11.0.1",
