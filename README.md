@@ -46,10 +46,10 @@
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 Base
-- [Node.js](https://nodejs.org/)：14.17.3
-- [TypeScript](https://www.typescriptlang.org/)：4.3.5
+- [Node.js](https://nodejs.org/)：16.13.0
+- [TypeScript](https://www.typescriptlang.org/)：4.5.4
 - [React](https://reactjs.org/)：17.0.2
-- [Next.js](https://nextjs.org/)：11.0.1
+- [Next.js](https://nextjs.org/)：12.0.7
 
 Other major libraries
 - [emotion](https://emotion.sh/)

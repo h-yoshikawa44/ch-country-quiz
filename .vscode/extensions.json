@@ -6,10 +6,11 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "naumovs.color-highlight",
-    "esbenp.prettier-vscode",
+    "formulahendry.auto-rename-tag",
     "dbaeumer.vscode-eslint",
-    "jpoissonnier.vscode-styled-components",
+    "esbenp.prettier-vscode",
     "stylelint.vscode-stylelint",
+    "styled-components.vscode-styled-components"
   ],
   // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
   "unwantedRecommendations": []
