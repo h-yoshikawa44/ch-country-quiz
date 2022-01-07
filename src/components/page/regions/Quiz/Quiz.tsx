@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButton';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
+import { fonts, colors } from '@/styles/constants';
 
 type QuizMode = 'question' | 'solution' | 'result';
 
@@ -121,15 +122,15 @@ const resultsTextAlignCenter = css`
 `;
 
 const resultsTitle = css`
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 48px;
   font-weight: bold;
   line-height: 72px;
-  color: #1d355d;
+  color: ${colors.navy1};
 `;
 
 const resultsText = css`
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 18px;
   font-weight: normal;
   line-height: 27px;
@@ -139,7 +140,7 @@ const resultsCount = css`
   font-size: 36px;
   font-weight: bold;
   line-height: 54px;
-  color: #60bf88;
+  color: ${colors.correct};
 `;
 
 const answerGridList = css`
@@ -151,11 +152,11 @@ const answerGridList = css`
 `;
 
 const cardText = css`
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 24px;
   font-weight: bold;
   line-height: 36px;
-  color: #2f527b;
+  color: ${colors.navy2};
 `;
 
 const alignRight = css`

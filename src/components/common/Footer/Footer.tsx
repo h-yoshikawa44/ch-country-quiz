@@ -1,6 +1,7 @@
 import { VFC, ComponentPropsWithRef } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { breakPoint, fonts, colors } from '@/styles/constants';
 
 type Props = ComponentPropsWithRef<'footer'>;
 
@@ -34,13 +35,13 @@ const footer = css`
 `;
 
 const footerText = css`
-  font-family: Montserrat, sans-serif;
+  font-family: ${fonts.montserrat};
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
-  color: #fff;
+  color: ${colors.white};
 
-  @media (max-width: 600px) {
+  @media (max-width: ${breakPoint.sm - 1}px) {
     flex-direction: column;
     justify-content: space-around;
     height: 70px;

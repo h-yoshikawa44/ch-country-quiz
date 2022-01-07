@@ -2,6 +2,7 @@ import { VFC } from 'react';
 import { css } from '@emotion/react';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
+import { fonts, colors } from '@/styles/constants';
 
 const Home: VFC = () => {
   return (
@@ -34,11 +35,11 @@ const formGrid = css`
 `;
 
 const cardText = css`
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 24px;
   font-weight: bold;
   line-height: 36px;
-  color: #2f527b;
+  color: ${colors.navy2};
 `;
 
 const regionSelect = css`

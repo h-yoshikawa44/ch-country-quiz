@@ -1,5 +1,6 @@
 import { VFC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
+import { fonts, colors } from '@/styles/constants';
 
 type Props = ComponentPropsWithRef<'header'>;
 
@@ -12,11 +13,11 @@ const Header: VFC<Props> = ({ ...props }) => {
 };
 
 const headerText = css`
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 36px;
   font-weight: bold;
   line-height: 54px;
-  color: #f2f2f2;
+  color: ${colors.gray};
   text-transform: uppercase;
 `;
 

@@ -1,6 +1,7 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { createDarkenColor } from '@/util/color';
+import { createRGBAColor, createDarkenColor } from '@/util/color';
+import { fonts, colors } from '@/styles/constants';
 
 type Variant = 'contained' | 'outlined';
 
@@ -18,7 +19,7 @@ const Button: FC<Props> = ({ variant = 'contained', children, ...props }) => {
 
 const button = css`
   padding: 16px 32px;
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 18px;
   font-weight: bold;
   line-height: 27px;
@@ -34,31 +35,33 @@ const button = css`
 const buttonVariant = (variant: Variant) => {
   if (variant === 'contained') {
     return css`
-      color: #fff;
-      background-color: #f9a826;
+      color: ${colors.white};
+      background-color: ${colors.primary};
       border: none;
       box-shadow: 0 2px 4px rgb(252 168 47 / 40%);
 
       &:hover,
       &:focus {
         /* stylelint-disable-next-line function-name-case */
-        background-color: ${createDarkenColor('#f9a826', 0.15)};
+        background-color: ${createDarkenColor(colors.primary, 0.15)};
       }
     `;
   }
   if (variant === 'outlined') {
     return css`
-      color: #1d355d;
-      background-color: #fff;
-      border: 2px solid #1d355d;
+      /* stylelint-disable function-name-case */
+      color: ${createRGBAColor(colors.secondary, 0.8)};
+      background-color: ${colors.white};
+      border: 2px solid ${createRGBAColor(colors.secondary, 0.7)};
 
       &:hover,
       &:focus {
-        color: #fff;
-        background-color: #f9a826;
-        border: 2px solid #f9a826;
+        color: ${colors.white};
+        background-color: ${colors.primary};
+        border: 2px solid ${colors.primary};
       }
     `;
+    /* stylelint-enable function-name-case */
   }
 };
 

@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { CheckCircleOutline } from '@emotion-icons/material-rounded/CheckCircleOutline';
 import { HighlightOff } from '@emotion-icons/material-rounded/HighlightOff';
 import { createRGBAColor } from '@/util/color';
+import { fonts, colors } from '@/styles/constants';
 
 type QuizMode = 'question' | 'solution' | 'result';
 
@@ -49,16 +50,16 @@ const answerButton = css`
   align-items: center;
   width: 100%;
   padding: 12px;
-  font-family: Poppins, sans-serif;
+  font-family: ${fonts.poppins};
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   /* stylelint-disable-next-line function-name-case */
-  color: ${createRGBAColor('#6066d0', 0.8)};
+  color: ${createRGBAColor(colors.secondary, 0.8)};
   cursor: pointer;
-  background-color: #fff;
+  background-color: ${colors.white};
   /* stylelint-disable-next-line function-name-case */
-  border: 2px solid ${createRGBAColor('#6066d0', 0.7)};
+  border: 2px solid ${createRGBAColor(colors.secondary, 0.7)};
   border-radius: 12px;
 
   &:disabled {
@@ -67,9 +68,9 @@ const answerButton = css`
 
   &:hover:not(:disabled),
   &:focus:not(:disabled) {
-    color: #fff;
-    background-color: #f9a826;
-    border: 2px solid #f9a826;
+    color: ${colors.white};
+    background-color: ${colors.primary};
+    border: 2px solid ${colors.primary};
   }
 
   &:focus:not(.focus-visible) {
@@ -79,17 +80,17 @@ const answerButton = css`
 
 const correctAnswerButton = css`
   &:disabled {
-    color: #fff;
-    background-color: #60bf88;
-    border: 2px solid #60bf88;
+    color: ${colors.white};
+    background-color: ${colors.correct};
+    border: 2px solid ${colors.correct};
   }
 `;
 
 const wrongAnswerButton = css`
   &:disabled {
-    color: #fff;
-    background-color: #ea8282;
-    border: 2px solid #ea8282;
+    color: ${colors.white};
+    background-color: ${colors.wrong};
+    border: 2px solid ${colors.wrong};
   }
 `;
 
