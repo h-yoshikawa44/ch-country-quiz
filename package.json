@@ -14,7 +14,8 @@
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:stylelint": "yarn lint:stylelint --fix",
     "fix:prettier": "yarn check:prettier --write",
-    "preinstall": "typesync || :"
+    "preinstall": "typesync || echo 'skip typesync'",
+    "prepare": "simple-git-hooks || echo 'Can not set git hooks'"
   },
   "dependencies": {
     "@emotion-icons/material-rounded": "^3.14.0",
@@ -30,26 +31,43 @@
   "devDependencies": {
     "@babel/core": "^7.16.7",
     "@emotion/babel-preset-css-prop": "^11.2.0",
+    "@stylelint/postcss-css-in-js": "^0.37.2",
     "@types/babel__core": "^7.1.18",
-    "@types/eslint": "7.28.0",
-    "@types/prettier": "^2.3.2",
+    "@types/eslint": "^8.2.2",
+    "@types/prettier": "^2.4.2",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
-    "@types/stylelint": "^13.13.1",
-    "eslint": "7.30.0",
-    "eslint-config-next": "11.0.1",
+    "@types/stylelint": "^14.0.0",
+    "eslint": "^8.6.0",
+    "eslint-config-next": "^12.0.7",
     "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.3.2",
-    "stylelint": "^13.13.1",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-recess-order": "^2.4.0",
-    "stylelint-config-standard": "^22.0.0",
-    "stylelint-order": "^4.1.0",
+    "lint-staged": "^12.1.5",
+    "postcss-syntax": "^0.36.2",
+    "prettier": "^2.5.1",
+    "simple-git-hooks": "^2.7.0",
+    "stylelint": "^14.2.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
     "typescript": "^4.5.4",
     "typesync": "^0.8.0"
   },
   "volta": {
     "node": "16.13.0",
     "yarn": "1.22.17"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn run -s lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write --loglevel=error",
+      "eslint --fix --quiet",
+      "stylelint --fix --quiet"
+    ],
+    "./**/*.{html,gql,graphql,json}": [
+      "prettier --write --loglevel=error"
+    ]
   }
 }
