@@ -12,7 +12,7 @@ type Props = Omit<ComponentPropsWithRef<'button'>, 'disabled'> & {
   answerStatus: 'correct' | 'wrong' | 'none';
 };
 
-const AnswerButton: FC<Props> = ({
+const QuestionAnswerButton: FC<Props> = ({
   headText,
   quizMode,
   answerStatus,
@@ -104,4 +104,4 @@ const buttonFootIcon = css`
   margin-left: auto;
 `;
 
-export default AnswerButton;
+export default QuestionAnswerButton;

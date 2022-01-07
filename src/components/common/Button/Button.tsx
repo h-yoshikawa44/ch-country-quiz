@@ -37,7 +37,7 @@ const buttonVariant = (variant: Variant) => {
       color: #fff;
       background-color: #f9a826;
       border: none;
-      box-shadow: 0 2px 4px rgba(252, 168, 47, 0.4);
+      box-shadow: 0 2px 4px rgb(252 168 47 / 40%);
 
       &:hover,
       &:focus {
