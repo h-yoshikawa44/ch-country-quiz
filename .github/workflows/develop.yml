@@ -1,13 +1,10 @@
 name: Develop Check
-on: [push, pull_request]
-
-env:
-  project-name: country-quiz
+on: push
 
 jobs:
   front-end-check:
     name: Front End Check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     timeout-minutes: 5
 
     steps:
@@ -17,19 +14,8 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: 14.17.3
-
-      - name: Get Yarn Cache Directory Path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache Node Modules
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.project-name }}-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.project-name }}-
+          node-version: 16.13.0
+          cache: yarn
 
       - name: Install Dependencies
         run: yarn install
