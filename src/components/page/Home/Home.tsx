@@ -4,7 +4,11 @@ import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { fonts, colors } from '@/styles/constants';
 
-const Home: VFC = () => {
+type Props = {
+  regions: string[];
+};
+
+const Home: VFC<Props> = ({ regions }) => {
   return (
     <main>
       <QuizCard isImage>
@@ -13,12 +17,11 @@ const Home: VFC = () => {
             Select region
           </label>
           <select css={regionSelect} name="regions" id="region-select">
-            <option value="africa">Africa</option>
-            <option value="americas">Americas</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="oceania">Oceania</option>
-            <option value="all">All</option>
+            {regions.map((region) => (
+              <option key={region} css={regionOption} value={region}>
+                {region}
+              </option>
+            ))}
           </select>
           <div css={alignCenter}>
             <Button>Start</Button>
@@ -45,6 +48,10 @@ const cardText = css`
 const regionSelect = css`
   display: block;
   width: 100%;
+`;
+
+const regionOption = css`
+  text-transform: capitalize;
 `;
 
 const alignCenter = css`

@@ -2,10 +2,14 @@ import { VFC } from 'react';
 import Layout from '@/components/common/Layout/Layout';
 import Home from './Home';
 
-const HomePage: VFC = () => {
+type Props = {
+  regions: string[];
+};
+
+const HomePage: VFC<Props> = ({ regions }) => {
   return (
     <Layout>
-      <Home />
+      <Home regions={regions} />
     </Layout>
   );
 };
