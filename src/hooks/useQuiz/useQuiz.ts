@@ -1,15 +1,33 @@
-import { useState, useEffect, useCallback } from 'react';
+import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { Countries } from '@/models/Country';
 import { QuizMode, Answer, Question } from '@/models/Quiz';
 import { QUESTION_COUNT, ANSWER_SELECTION_COUNT } from '@/constants/quiz';
 import { getRandomNum, getRandomNumList, shuffle } from '@/util/common';
 
-const useQuiz = (countries: Countries) => {
+const useQuiz = () => {
+  const [region, setRegion] = useState<string>('');
   const [quizData, setQuizData] = useState<Question[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(1);
   const [currentAnswer, setCurrentAnswer] = useState<string>('');
   const [correctCount, setCorrectCount] = useState<number>(0);
   const [quizMode, setQuizMode] = useState<QuizMode>('loading');
+  const router = useRouter();
+
+  const handleSelectRegion = useCallback(
+    (e: ChangeEvent<HTMLSelectElement>) => {
+      setRegion(e.target.value);
+    },
+    []
+  );
+
+  const handleQuizStart = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      router.push(`regions/${region}`);
+    },
+    [region, router]
+  );
 
   const createAnswerList = useCallback(
     (countries: Countries, numList: number[]) => {
@@ -66,14 +84,16 @@ const useQuiz = (countries: Countries) => {
     [getQuiz]
   );
 
-  // クイズデータセットアップ
-  useEffect(() => {
-    setQuizData(createQuizList(countries));
-    setCurrentQuestion(0);
-    setCurrentAnswer('');
-    setCorrectCount(0);
-    setQuizMode('question');
-  }, [countries, createQuizList]);
+  const initialQuiz = useCallback(
+    (countries: Countries) => {
+      setQuizData(createQuizList(countries));
+      setCurrentQuestion(0);
+      setCurrentAnswer('');
+      setCorrectCount(0);
+      setQuizMode('question');
+    },
+    [createQuizList]
+  );
 
   const handleAnswer = useCallback((answer: string, isCorrect: boolean) => {
     setCurrentAnswer(answer);
@@ -94,14 +114,22 @@ const useQuiz = (countries: Countries) => {
     }
   }, [currentQuestion]);
 
+  const handleBackTop = useCallback(() => {
+    router.push('/');
+  }, [router]);
+
   return {
     quizData,
     currentQuestion,
     currentAnswer,
     correctCount,
     quizMode,
+    handleSelectRegion,
+    handleQuizStart,
+    initialQuiz,
     handleAnswer,
     handleNext,
+    handleBackTop,
   };
 };
 

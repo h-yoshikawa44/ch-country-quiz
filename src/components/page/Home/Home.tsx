@@ -1,8 +1,8 @@
-import { VFC, FormEvent, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { VFC, useContext } from 'react';
 import { css } from '@emotion/react';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
+import { QuizContext } from '@/components/context/QuizContext';
 import { fonts, colors } from '@/styles/constants';
 
 type Props = {
@@ -10,11 +10,7 @@ type Props = {
 };
 
 const Home: VFC<Props> = ({ regions }) => {
-  const router = useRouter();
-  const handleQuizStart = useCallback((e: FormEvent<HTMLFormElement>) => {
-    console.log(e);
-    e.preventDefault();
-  }, []);
+  const { handleSelectRegion, handleQuizStart } = useContext(QuizContext);
 
   return (
     <main>
@@ -23,7 +19,12 @@ const Home: VFC<Props> = ({ regions }) => {
           <label css={cardText} htmlFor="region-select">
             Select region
           </label>
-          <select css={regionSelect} name="regions" id="region-select">
+          <select
+            css={regionSelect}
+            name="regions"
+            id="region-select"
+            onChange={handleSelectRegion}
+          >
             {regions.map((region) => (
               <option key={region} css={regionOption} value={region}>
                 {region}

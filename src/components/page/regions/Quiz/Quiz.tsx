@@ -1,10 +1,11 @@
-import { VFC, useCallback } from 'react';
+import { VFC, useCallback, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButton';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
+import { QuizContext } from '@/components/context/QuizContext';
 import { fonts, colors } from '@/styles/constants';
 import { Countries } from '@/models/Country';
 import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
@@ -21,21 +22,25 @@ const Quiz: VFC<Props> = ({ countries }) => {
     currentAnswer,
     correctCount,
     quizMode,
+    initialQuiz,
     handleAnswer,
     handleNext,
-  } = useQuiz(countries);
+    handleBackTop,
+  } = useContext(QuizContext);
 
-  const router = useRouter();
-  const handleTop = useCallback(() => {
-    router.push('/');
-  }, [router]);
-
-  console.log(quizData);
+  useEffect(() => {
+    initialQuiz(countries);
+  }, [countries, initialQuiz]);
 
   return (
     <main>
       <QuizCard isImage={quizMode !== 'result'}>
-        {quizMode === 'result' ? (
+        {quizMode === 'loading' && (
+          <div>
+            <p>Loading...</p>
+          </div>
+        )}
+        {quizMode === 'result' && (
           <div css={resultsGrid}>
             <p css={resultsImageBox}>
               <Image src="/undraw_winners.svg" alt="" layout="fill" />
@@ -47,11 +52,12 @@ const Quiz: VFC<Props> = ({ countries }) => {
                 answers
               </p>
             </div>
-            <Button variant="outlined" onClick={handleTop}>
+            <Button variant="outlined" onClick={handleBackTop}>
               Try again
             </Button>
           </div>
-        ) : (
+        )}
+        {(quizMode === 'question' || quizMode === 'solution') && (
           <div>
             {quizData[currentQuestion]?.questionFlag && (
               <p css={questionFlagBlock}>
