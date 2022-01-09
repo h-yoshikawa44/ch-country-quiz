@@ -2,21 +2,24 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { CheckCircleOutline } from '@emotion-icons/material-rounded/CheckCircleOutline';
 import { HighlightOff } from '@emotion-icons/material-rounded/HighlightOff';
-import { createRGBAColor } from '@/util/color';
 import { fonts, colors } from '@/styles/constants';
-
-type QuizMode = 'question' | 'solution' | 'result';
+import { createRGBAColor } from '@/util/color';
+import { QuizMode, AnswerStatus } from '@/models/Quiz';
 
 type Props = Omit<ComponentPropsWithRef<'button'>, 'disabled'> & {
   headText: string;
+  value: string;
   quizMode: QuizMode;
-  answerStatus: 'correct' | 'wrong' | 'none';
+  answerStatus: AnswerStatus;
+  handleAnswer: (answer: string, isCorrect: boolean) => void;
 };
 
 const QuestionAnswerButton: FC<Props> = ({
   headText,
+  value,
   quizMode,
   answerStatus,
+  handleAnswer,
   children,
   ...props
 }) => {
@@ -31,6 +34,7 @@ const QuestionAnswerButton: FC<Props> = ({
         isSolutionWrong && wrongAnswerButton,
       ]}
       disabled={quizMode === 'solution'}
+      onClick={() => handleAnswer(value, answerStatus === 'correct')}
       {...props}
     >
       <span css={buttonHeadText}>{headText}</span>

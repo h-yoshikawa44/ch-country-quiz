@@ -1,103 +1,97 @@
-import { VFC, useState } from 'react';
+import { VFC, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButton';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { fonts, colors } from '@/styles/constants';
+import { Countries } from '@/models/Country';
+import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
+import useQuiz from '@/hooks/useQuiz';
 
-type QuizMode = 'question' | 'solution' | 'result';
-
-type MyAnswer = {
-  correctCount: number;
-  answers: [{ text: string; isCorrect: boolean }] | [];
+type Props = {
+  countries: Countries;
 };
 
-const data = [
-  {
-    question: 'Kuala Lumpur is the capital of',
-    answers: [
-      {
-        headText: 'A',
-        text: 'Vietnam',
-        isCorrect: false,
-      },
-      {
-        headText: 'B',
-        text: 'Malaysia',
-        isCorrect: true,
-      },
-      {
-        headText: 'C',
-        text: 'Sweden',
-        isCorrect: false,
-      },
-      {
-        headText: 'D',
-        text: 'Austria',
-        isCorrect: false,
-      },
-    ],
-  },
-];
+const Quiz: VFC<Props> = ({ countries }) => {
+  const {
+    quizData,
+    currentQuestion,
+    currentAnswer,
+    correctCount,
+    quizMode,
+    handleAnswer,
+    handleNext,
+  } = useQuiz(countries);
 
-const Quiz: VFC = () => {
-  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-  const [quizMode, serQuizmode] = useState<QuizMode>('result');
-  const [myAnswer, setMyAnswer] = useState<MyAnswer>({
-    correctCount: 0,
-    answers: [],
-  });
+  const router = useRouter();
+  const handleTop = useCallback(() => {
+    router.push('/');
+  }, [router]);
+
+  console.log(quizData);
 
   return (
     <main>
       <QuizCard isImage={quizMode !== 'result'}>
         {quizMode === 'result' ? (
           <div css={resultsGrid}>
-            <div css={resultsImageBox}>
+            <p css={resultsImageBox}>
               <Image src="/undraw_winners.svg" alt="" layout="fill" />
-            </div>
+            </p>
             <div css={resultsTextAlignCenter}>
               <p css={resultsTitle}>Results</p>
               <p css={resultsText}>
-                You got <span css={resultsCount}>4</span> correct answers
+                You got <span css={resultsCount}>{correctCount}</span> correct
+                answers
               </p>
             </div>
-            <Button variant="outlined">Try again</Button>
+            <Button variant="outlined" onClick={handleTop}>
+              Try again
+            </Button>
           </div>
         ) : (
           <div>
-            <p css={cardText}>{data[currentQuestion]?.question}</p>
-            <ul css={answerGridList}>
-              {data[currentQuestion]?.answers.map((answer) => {
+            {quizData[currentQuestion]?.questionFlag && (
+              <p css={questionFlagBlock}>
+                <Image
+                  src={quizData[currentQuestion].questionFlag}
+                  alt="flag"
+                  layout="fill"
+                />
+              </p>
+            )}
+            <p css={cardText}>{quizData[currentQuestion]?.text}</p>
+            <div css={answerBlock}>
+              {quizData[currentQuestion]?.answers.map((answer, index) => {
                 let answerStatus;
                 if (answer.isCorrect) {
                   answerStatus = 'correct';
-                } else if (
-                  myAnswer.answers[currentQuestion]?.text === answer.text
-                ) {
+                } else if (currentAnswer === answer.text) {
                   answerStatus = 'wrong';
                 } else {
                   answerStatus = 'none';
                 }
                 return (
-                  <li key={`${answer.headText}-${answer.text}`}>
-                    <QuestionAnswerButton
-                      headText={answer.headText}
-                      quizMode={quizMode}
-                      answerStatus={answerStatus}
-                    >
-                      {answer.text}
-                    </QuestionAnswerButton>
-                  </li>
+                  <QuestionAnswerButton
+                    key={`${ANSWER_SELECTION_ID_LIST[index]}-${answer.text}`}
+                    headText={ANSWER_SELECTION_ID_LIST[index]}
+                    value={answer.text}
+                    quizMode={quizMode}
+                    answerStatus={answerStatus}
+                    handleAnswer={handleAnswer}
+                  >
+                    {answer.text}
+                  </QuestionAnswerButton>
                 );
               })}
               {quizMode === 'solution' && (
                 <div css={alignRight}>
-                  <Button>Next</Button>
+                  <Button onClick={handleNext}>Next</Button>
                 </div>
               )}
-            </ul>
+            </div>
           </div>
         )}
       </QuizCard>
@@ -143,7 +137,14 @@ const resultsCount = css`
   color: ${colors.correct};
 `;
 
-const answerGridList = css`
+const questionFlagBlock = css`
+  position: relative;
+  width: 84px;
+  height: 52px;
+  margin-bottom: 24px;
+`;
+
+const answerBlock = css`
   display: grid;
   row-gap: 24px;
   padding-inline-start: 0;

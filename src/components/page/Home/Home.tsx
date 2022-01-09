@@ -1,4 +1,5 @@
-import { VFC } from 'react';
+import { VFC, FormEvent, useCallback } from 'react';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
@@ -9,10 +10,16 @@ type Props = {
 };
 
 const Home: VFC<Props> = ({ regions }) => {
+  const router = useRouter();
+  const handleQuizStart = useCallback((e: FormEvent<HTMLFormElement>) => {
+    console.log(e);
+    e.preventDefault();
+  }, []);
+
   return (
     <main>
       <QuizCard isImage>
-        <form css={formGrid}>
+        <form css={formGrid} onSubmit={handleQuizStart}>
           <label css={cardText} htmlFor="region-select">
             Select region
           </label>
@@ -24,7 +31,7 @@ const Home: VFC<Props> = ({ regions }) => {
             ))}
           </select>
           <div css={alignCenter}>
-            <Button>Start</Button>
+            <Button type="submit">Start</Button>
           </div>
         </form>
       </QuizCard>
