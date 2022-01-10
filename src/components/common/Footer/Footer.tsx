@@ -28,10 +28,16 @@ const Footer: VFC<Props> = ({ ...props }) => {
 
 const footer = css`
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100px;
+  padding: 2rem 0;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 const footerText = css`

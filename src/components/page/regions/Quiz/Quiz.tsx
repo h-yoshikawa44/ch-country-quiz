@@ -36,25 +36,8 @@ const Quiz: VFC<Props> = ({ countries }) => {
     <main>
       <QuizCard isImage={quizMode !== 'result'}>
         {quizMode === 'loading' && (
-          <div>
-            <p>Loading...</p>
-          </div>
-        )}
-        {quizMode === 'result' && (
-          <div css={resultsGrid}>
-            <p css={resultsImageBox}>
-              <Image src="/undraw_winners.svg" alt="" layout="fill" />
-            </p>
-            <div css={resultsTextAlignCenter}>
-              <p css={resultsTitle}>Results</p>
-              <p css={resultsText}>
-                You got <span css={resultsCount}>{correctCount}</span> correct
-                answers
-              </p>
-            </div>
-            <Button variant="outlined" onClick={handleBackTop}>
-              Try again
-            </Button>
+          <div css={resultsTextAlignCenter}>
+            <p css={cardText}>Loading...</p>
           </div>
         )}
         {(quizMode === 'question' || quizMode === 'solution') && (
@@ -98,6 +81,23 @@ const Quiz: VFC<Props> = ({ countries }) => {
                 </div>
               )}
             </div>
+          </div>
+        )}
+        {quizMode === 'result' && (
+          <div css={resultsGrid}>
+            <p css={resultsImageBox}>
+              <Image src="/undraw_winners.svg" alt="" layout="fill" />
+            </p>
+            <div css={resultsTextAlignCenter}>
+              <p css={resultsTitle}>Results</p>
+              <p css={resultsText}>
+                You got <span css={resultsCount}>{correctCount}</span> correct
+                answers
+              </p>
+            </div>
+            <Button variant="outlined" onClick={handleBackTop}>
+              Try again
+            </Button>
           </div>
         )}
       </QuizCard>

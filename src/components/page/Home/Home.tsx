@@ -56,6 +56,9 @@ const cardText = css`
 const regionSelect = css`
   display: block;
   width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 8px;
 `;
 
 const regionOption = css`

@@ -53,7 +53,7 @@ const answerButton = css`
   display: inline-flex;
   align-items: center;
   width: 100%;
-  padding: 12px;
+  padding: 8px 12px;
   font-family: ${fonts.poppins};
   font-size: 18px;
   font-weight: 500;
