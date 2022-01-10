@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Head from 'next/head';
 import { css } from '@emotion/react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
@@ -10,16 +9,8 @@ type Props = {
 };
 
 const Layout: FC<Props> = ({ pageName, children }) => {
-  const title = pageName ? `${pageName} - Country quiz` : 'Country quiz';
-  const content = pageName
-    ? `devChallenges.io - Country quiz - ${pageName} | by h-yoshikawa44`
-    : 'devChallenges.io - Country quiz | by h-yoshikawa44';
   return (
     <div css={[globalBackGround, globalLayout]}>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={content} />
-      </Head>
       <div css={contentsBlock}>
         <div css={container}>
           <Header />

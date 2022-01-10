@@ -25,8 +25,13 @@ const Home: VFC<Props> = ({ regions }) => {
             id="region-select"
             onChange={handleSelectRegion}
           >
+            {/* process.browser による条件は警告回避のため */}
             {regions.map((region) => (
-              <option key={region} css={regionSelectOption} value={region}>
+              <option
+                key={region}
+                css={process.browser && regionSelectOption}
+                value={region}
+              >
                 {region}
               </option>
             ))}

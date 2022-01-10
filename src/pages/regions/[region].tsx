@@ -1,5 +1,6 @@
-import { VFC } from 'react';
+import { VFC, Fragment } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import RegionQuiz from '@/components/page/regions/Quiz';
 import { Countries } from '@/models/Country';
 import getCountriesAll from '@/domains/getCountriesAll';
@@ -10,7 +11,18 @@ type Props = {
 };
 
 const Quiz: VFC<Props> = ({ countries }) => {
-  return <RegionQuiz countries={countries} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Quiz - Country quiz</title>
+        <meta
+          name="description"
+          content="devChallenges.io - Country quiz - Quiz | by h-yoshikawa44"
+        />
+      </Head>
+      <RegionQuiz countries={countries} />
+    </Fragment>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
