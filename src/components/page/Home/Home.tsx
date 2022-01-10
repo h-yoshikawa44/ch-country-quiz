@@ -1,27 +1,38 @@
-import { VFC } from 'react';
+import { VFC, useContext } from 'react';
 import { css } from '@emotion/react';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
+import { QuizContext } from '@/components/context/QuizContext';
 import { fonts, colors } from '@/styles/constants';
 
-const Home: VFC = () => {
+type Props = {
+  regions: string[];
+};
+
+const Home: VFC<Props> = ({ regions }) => {
+  const { handleSelectRegion, handleQuizStart } = useContext(QuizContext);
+
   return (
     <main>
       <QuizCard isImage>
-        <form css={formGrid}>
+        <form css={formLayout} onSubmit={handleQuizStart}>
           <label css={cardText} htmlFor="region-select">
             Select region
           </label>
-          <select css={regionSelect} name="regions" id="region-select">
-            <option value="africa">Africa</option>
-            <option value="americas">Americas</option>
-            <option value="asia">Asia</option>
-            <option value="europe">Europe</option>
-            <option value="oceania">Oceania</option>
-            <option value="all">All</option>
+          <select
+            css={regionSelect}
+            name="regions"
+            id="region-select"
+            onChange={handleSelectRegion}
+          >
+            {regions.map((region) => (
+              <option key={region} css={regionSelectOption} value={region}>
+                {region}
+              </option>
+            ))}
           </select>
           <div css={alignCenter}>
-            <Button>Start</Button>
+            <Button type="submit">Start</Button>
           </div>
         </form>
       </QuizCard>
@@ -29,7 +40,7 @@ const Home: VFC = () => {
   );
 };
 
-const formGrid = css`
+const formLayout = css`
   display: grid;
   row-gap: 24px;
 `;
@@ -45,6 +56,13 @@ const cardText = css`
 const regionSelect = css`
   display: block;
   width: 100%;
+  height: 32px;
+  padding: 0 8px;
+  border-radius: 8px;
+`;
+
+const regionSelectOption = css`
+  text-transform: capitalize;
 `;
 
 const alignCenter = css`

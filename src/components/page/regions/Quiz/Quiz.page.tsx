@@ -1,11 +1,16 @@
 import { VFC } from 'react';
 import Layout from '@/components/common/Layout/Layout';
 import Quiz from './Quiz';
+import { Countries } from '@/models/Country';
 
-const QuizPage: VFC = () => {
+type Props = {
+  countries: Countries;
+};
+
+const QuizPage: VFC<Props> = ({ countries }) => {
   return (
     <Layout>
-      <Quiz />
+      <Quiz countries={countries} />
     </Layout>
   );
 };

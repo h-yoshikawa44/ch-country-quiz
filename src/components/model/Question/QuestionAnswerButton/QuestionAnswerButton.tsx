@@ -2,21 +2,24 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { CheckCircleOutline } from '@emotion-icons/material-rounded/CheckCircleOutline';
 import { HighlightOff } from '@emotion-icons/material-rounded/HighlightOff';
-import { createRGBAColor } from '@/util/color';
 import { fonts, colors } from '@/styles/constants';
-
-type QuizMode = 'question' | 'solution' | 'result';
+import { createRGBAColor } from '@/util/color';
+import { QuizMode, AnswerStatus } from '@/models/Quiz';
 
 type Props = Omit<ComponentPropsWithRef<'button'>, 'disabled'> & {
   headText: string;
+  value: string;
   quizMode: QuizMode;
-  answerStatus: 'correct' | 'wrong' | 'none';
+  answerStatus: AnswerStatus;
+  handleAnswer: (answer: string, isCorrect: boolean) => void;
 };
 
 const QuestionAnswerButton: FC<Props> = ({
   headText,
+  value,
   quizMode,
   answerStatus,
+  handleAnswer,
   children,
   ...props
 }) => {
@@ -27,16 +30,17 @@ const QuestionAnswerButton: FC<Props> = ({
     <button
       css={[
         answerButton,
-        isSolutionCorrect && correctAnswerButton,
-        isSolutionWrong && wrongAnswerButton,
+        isSolutionCorrect && answerButtonCorrect,
+        isSolutionWrong && answerButtonWrong,
       ]}
       disabled={quizMode === 'solution'}
+      onClick={() => handleAnswer(value, answerStatus === 'correct')}
       {...props}
     >
-      <span css={buttonHeadText}>{headText}</span>
+      <span css={answerButtonHeadText}>{headText}</span>
       {children}
       {quizMode === 'solution' && (
-        <span css={buttonFootIcon}>
+        <span css={answerButtonFootIcon}>
           {answerStatus === 'correct' && <CheckCircleOutline size={24} />}
           {answerStatus === 'wrong' && <HighlightOff size={24} />}
         </span>
@@ -49,13 +53,14 @@ const answerButton = css`
   display: inline-flex;
   align-items: center;
   width: 100%;
-  padding: 12px;
+  padding: 8px 12px;
   font-family: ${fonts.poppins};
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
   /* stylelint-disable-next-line function-name-case */
   color: ${createRGBAColor(colors.secondary, 0.8)};
+  text-align: left;
   cursor: pointer;
   background-color: ${colors.white};
   /* stylelint-disable-next-line function-name-case */
@@ -78,7 +83,7 @@ const answerButton = css`
   }
 `;
 
-const correctAnswerButton = css`
+const answerButtonCorrect = css`
   &:disabled {
     color: ${colors.white};
     background-color: ${colors.correct};
@@ -86,7 +91,7 @@ const correctAnswerButton = css`
   }
 `;
 
-const wrongAnswerButton = css`
+const answerButtonWrong = css`
   &:disabled {
     color: ${colors.white};
     background-color: ${colors.wrong};
@@ -94,13 +99,13 @@ const wrongAnswerButton = css`
   }
 `;
 
-const buttonHeadText = css`
+const answerButtonHeadText = css`
   margin-right: 42px;
   font-size: 24px;
   line-height: 36px;
 `;
 
-const buttonFootIcon = css`
+const answerButtonFootIcon = css`
   display: block;
   margin-left: auto;
 `;
