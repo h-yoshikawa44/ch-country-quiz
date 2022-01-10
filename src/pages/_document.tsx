@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="ja">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
@@ -16,6 +16,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="/favicon.ico" />
+          <meta name="robots" content="noindex, nofollow" />
         </Head>
         <body>
           <Main />
