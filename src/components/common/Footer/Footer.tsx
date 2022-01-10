@@ -28,7 +28,6 @@ const Footer: VFC<Props> = ({ ...props }) => {
 
 const footer = css`
   display: flex;
-  flex: 1;
   align-items: center;
   justify-content: center;
   padding: 2rem 0;

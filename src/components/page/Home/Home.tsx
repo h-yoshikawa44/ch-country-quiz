@@ -15,7 +15,7 @@ const Home: VFC<Props> = ({ regions }) => {
   return (
     <main>
       <QuizCard isImage>
-        <form css={formGrid} onSubmit={handleQuizStart}>
+        <form css={formLayout} onSubmit={handleQuizStart}>
           <label css={cardText} htmlFor="region-select">
             Select region
           </label>
@@ -26,7 +26,7 @@ const Home: VFC<Props> = ({ regions }) => {
             onChange={handleSelectRegion}
           >
             {regions.map((region) => (
-              <option key={region} css={regionOption} value={region}>
+              <option key={region} css={regionSelectOption} value={region}>
                 {region}
               </option>
             ))}
@@ -40,7 +40,7 @@ const Home: VFC<Props> = ({ regions }) => {
   );
 };
 
-const formGrid = css`
+const formLayout = css`
   display: grid;
   row-gap: 24px;
 `;
@@ -61,7 +61,7 @@ const regionSelect = css`
   border-radius: 8px;
 `;
 
-const regionOption = css`
+const regionSelectOption = css`
   text-transform: capitalize;
 `;
 

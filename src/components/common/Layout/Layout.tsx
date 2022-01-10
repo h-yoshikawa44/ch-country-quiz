@@ -15,7 +15,7 @@ const Layout: FC<Props> = ({ pageName, children }) => {
     ? `devChallenges.io - Country quiz - ${pageName} | by h-yoshikawa44`
     : 'devChallenges.io - Country quiz | by h-yoshikawa44';
   return (
-    <div css={[globalBackGroud, globalLayout]}>
+    <div css={[globalBackGround, globalLayout]}>
       <Head>
         <title>{title}</title>
         <meta name="description" content={content} />
@@ -31,7 +31,7 @@ const Layout: FC<Props> = ({ pageName, children }) => {
   );
 };
 
-const globalBackGroud = css`
+const globalBackGround = css`
   background-image: url('/background.png');
   background-position: center center;
   background-size: cover;
@@ -47,6 +47,10 @@ const contentsBlock = css`
   flex: 1 0 auto;
   min-height: 720px;
   margin: 80px 0;
+
+  @media (max-width: ${breakPoint.sm - 1}px) {
+    margin: 40px 0;
+  }
 `;
 
 const container = css`

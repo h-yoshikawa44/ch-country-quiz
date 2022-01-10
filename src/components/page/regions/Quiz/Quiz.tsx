@@ -1,15 +1,13 @@
-import { VFC, useCallback, useContext, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { VFC, useContext, useEffect } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButton';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
-import { fonts, colors } from '@/styles/constants';
+import { breakPoint, fonts, colors } from '@/styles/constants';
 import { Countries } from '@/models/Country';
 import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
-import useQuiz from '@/hooks/useQuiz';
 
 type Props = {
   countries: Countries;
@@ -84,8 +82,8 @@ const Quiz: VFC<Props> = ({ countries }) => {
           </div>
         )}
         {quizMode === 'result' && (
-          <div css={resultsGrid}>
-            <p css={resultsImageBox}>
+          <div css={resultsLayout}>
+            <p css={resultsImageBlock}>
               <Image src="/undraw_winners.svg" alt="" layout="fill" />
             </p>
             <div css={resultsTextAlignCenter}>
@@ -105,13 +103,47 @@ const Quiz: VFC<Props> = ({ countries }) => {
   );
 };
 
-const resultsGrid = css`
+const cardText = css`
+  font-family: ${fonts.poppins};
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 36px;
+  color: ${colors.navy2};
+`;
+
+const alignRight = css`
+  text-align: right;
+`;
+
+const questionFlagBlock = css`
+  position: relative;
+  width: 84px;
+  height: 56px;
+  margin-bottom: 24px;
+
+  @media (max-width: ${breakPoint.sm - 1}px) {
+    margin-bottom: 16px;
+  }
+`;
+
+const answerBlock = css`
+  display: grid;
+  row-gap: 24px;
+  margin-top: 32px;
+
+  @media (max-width: ${breakPoint.sm - 1}px) {
+    row-gap: 16px;
+    margin-top: 20px;
+  }
+`;
+
+const resultsLayout = css`
   display: grid;
   row-gap: 56px;
   justify-content: center;
 `;
 
-const resultsImageBox = css`
+const resultsImageBlock = css`
   position: relative;
   width: 240px;
   height: 128px;
@@ -141,33 +173,6 @@ const resultsCount = css`
   font-weight: bold;
   line-height: 54px;
   color: ${colors.correct};
-`;
-
-const questionFlagBlock = css`
-  position: relative;
-  width: 84px;
-  height: 52px;
-  margin-bottom: 24px;
-`;
-
-const answerBlock = css`
-  display: grid;
-  row-gap: 24px;
-  padding-inline-start: 0;
-  margin-block-start: 32px;
-  list-style: none;
-`;
-
-const cardText = css`
-  font-family: ${fonts.poppins};
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 36px;
-  color: ${colors.navy2};
-`;
-
-const alignRight = css`
-  text-align: right;
 `;
 
 export default Quiz;
