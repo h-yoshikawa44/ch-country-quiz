@@ -19,7 +19,7 @@ export const getStaticProps: GetStaticProps = async () => {
       return country.region;
     })
   ).sort();
-  regions.push('all');
+  regions.unshift('all');
 
   return {
     props: {
