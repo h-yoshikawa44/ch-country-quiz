@@ -56,7 +56,7 @@
     "typesync": "^0.8.0"
   },
   "volta": {
-    "node": "16.13.0",
+    "node": "14.19.0",
     "yarn": "1.22.17"
   },
   "simple-git-hooks": {
