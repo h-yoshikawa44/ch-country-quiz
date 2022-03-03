@@ -7,6 +7,7 @@ import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
 import { breakPoint, fonts, colors } from '@/styles/constants';
 import { Countries } from '@/models/Country';
+import { AnswerStatus } from '@/models/Quiz';
 import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
 
 type Props = {
@@ -15,20 +16,28 @@ type Props = {
 
 const Quiz: VFC<Props> = ({ countries }) => {
   const {
-    quizData,
+    currentQuiz,
     currentQuestion,
     currentAnswer,
     correctCount,
     quizMode,
+    initialCurrentQuiz,
     initialQuiz,
     handleAnswer,
     handleNext,
     handleBackTop,
   } = useContext(QuizContext);
 
+  // クイズ初期化
   useEffect(() => {
     initialQuiz(countries);
   }, [countries, initialQuiz]);
+
+  // 1問ごとにクイズ生成
+  useEffect(() => {
+    console.log(initialCurrentQuiz);
+    initialCurrentQuiz(countries);
+  }, [countries, currentQuestion, initialCurrentQuiz]);
 
   return (
     <main>
@@ -40,19 +49,19 @@ const Quiz: VFC<Props> = ({ countries }) => {
         )}
         {(quizMode === 'question' || quizMode === 'solution') && (
           <div>
-            {quizData[currentQuestion]?.questionFlag && (
+            {currentQuiz?.questionFlag && (
               <p css={questionFlagBlock}>
                 <Image
-                  src={quizData[currentQuestion].questionFlag}
+                  src={currentQuiz.questionFlag}
                   alt="flag"
                   layout="fill"
                 />
               </p>
             )}
-            <p css={cardText}>{quizData[currentQuestion]?.text}</p>
+            <p css={cardText}>{currentQuiz?.text}</p>
             <div css={answerBlock}>
-              {quizData[currentQuestion]?.answers.map((answer, index) => {
-                let answerStatus;
+              {currentQuiz?.answers.map((answer, index) => {
+                let answerStatus: AnswerStatus;
                 if (answer.isCorrect) {
                   answerStatus = 'correct';
                 } else if (currentAnswer === answer.text) {

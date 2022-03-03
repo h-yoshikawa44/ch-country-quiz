@@ -4,6 +4,7 @@ import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
 import { fonts, colors } from '@/styles/constants';
+import { capitalize } from '@/util/common';
 
 type Props = {
   regions: string[];
@@ -15,6 +16,9 @@ const Home: VFC<Props> = ({ regions }) => {
   return (
     <main>
       <QuizCard isImage>
+        <p css={cardTextDescription}>
+          How many questions can you answer correctly in a row?
+        </p>
         <form css={formLayout} onSubmit={handleQuizStart}>
           <label css={cardText} htmlFor="region-select">
             Select region
@@ -25,15 +29,8 @@ const Home: VFC<Props> = ({ regions }) => {
             id="region-select"
             onChange={handleSelectRegion}
           >
-            {/* process.browser による条件は警告回避のため */}
             {regions.map((region) => (
-              <option
-                key={region}
-                css={process.browser && regionSelectOption}
-                value={region}
-              >
-                {region}
-              </option>
+              <option key={region}>{capitalize(region)}</option>
             ))}
           </select>
           <div css={alignCenter}>
@@ -45,9 +42,18 @@ const Home: VFC<Props> = ({ regions }) => {
   );
 };
 
+const cardTextDescription = css`
+  font-family: ${fonts.poppins};
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 28px;
+  color: ${colors.navy2};
+`;
+
 const formLayout = css`
   display: grid;
   row-gap: 24px;
+  margin-top: 24px;
 `;
 
 const cardText = css`
