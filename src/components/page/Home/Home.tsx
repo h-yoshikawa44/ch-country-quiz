@@ -15,6 +15,9 @@ const Home: VFC<Props> = ({ regions }) => {
   return (
     <main>
       <QuizCard isImage>
+        <p css={cardTextDescription}>
+          How many questions can you answer correctly in a row?
+        </p>
         <form css={formLayout} onSubmit={handleQuizStart}>
           <label css={cardText} htmlFor="region-select">
             Select region
@@ -25,11 +28,11 @@ const Home: VFC<Props> = ({ regions }) => {
             id="region-select"
             onChange={handleSelectRegion}
           >
-            {/* process.browser による条件は警告回避のため */}
+            {/* typeof window による条件は警告回避のため */}
             {regions.map((region) => (
               <option
                 key={region}
-                css={process.browser && regionSelectOption}
+                css={typeof window !== 'undefined' && regionSelectOption}
                 value={region}
               >
                 {region}
@@ -45,9 +48,18 @@ const Home: VFC<Props> = ({ regions }) => {
   );
 };
 
+const cardTextDescription = css`
+  font-family: ${fonts.poppins};
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 28px;
+  color: ${colors.navy2};
+`;
+
 const formLayout = css`
   display: grid;
   row-gap: 24px;
+  margin-top: 24px;
 `;
 
 const cardText = css`

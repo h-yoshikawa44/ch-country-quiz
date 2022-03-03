@@ -5,13 +5,14 @@ const QuizContext = createContext({} as ReturnType<typeof useQuiz>);
 
 const QuizProvider: FC = ({ children }) => {
   const {
-    quizData,
+    currentQuiz,
     currentQuestion,
     currentAnswer,
     correctCount,
     quizMode,
     handleSelectRegion,
     handleQuizStart,
+    initialCurrentQuiz,
     initialQuiz,
     handleAnswer,
     handleNext,
@@ -21,13 +22,14 @@ const QuizProvider: FC = ({ children }) => {
   return (
     <QuizContext.Provider
       value={{
-        quizData,
+        currentQuiz,
         currentQuestion,
         currentAnswer,
         correctCount,
         quizMode,
         handleSelectRegion,
         handleQuizStart,
+        initialCurrentQuiz,
         initialQuiz,
         handleAnswer,
         handleNext,

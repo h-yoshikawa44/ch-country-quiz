@@ -2,12 +2,12 @@ import { ChangeEvent, FormEvent, useState, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import { Countries } from '@/models/Country';
 import { QuizMode, Answer, Question } from '@/models/Quiz';
-import { QUESTION_COUNT, ANSWER_SELECTION_COUNT } from '@/constants/quiz';
+import { ANSWER_SELECTION_COUNT } from '@/constants/quiz';
 import { getRandomNum, getRandomNumList, shuffle } from '@/util/common';
 
 const useQuiz = () => {
   const [region, setRegion] = useState<string>('all');
-  const [quizData, setQuizData] = useState<Question[]>([]);
+  const [currentQuiz, setCurrentQuiz] = useState<Question>();
   const [currentQuestion, setCurrentQuestion] = useState<number>(1);
   const [currentAnswer, setCurrentAnswer] = useState<string>('');
   const [correctCount, setCorrectCount] = useState<number>(0);
@@ -90,24 +90,19 @@ const useQuiz = () => {
     [createCapitalAnswerList, createNameAnswerList]
   );
 
-  const createQuizList = useCallback(
-    (countries: Countries) =>
-      Array.from({ length: QUESTION_COUNT }, (v, i) => i).map((num) =>
-        getQuiz(countries)
-      ),
+  const initialCurrentQuiz = useCallback(
+    (countries: Countries) => {
+      setCurrentQuiz(getQuiz(countries));
+    },
     [getQuiz]
   );
 
-  const initialQuiz = useCallback(
-    (countries: Countries) => {
-      setQuizData(createQuizList(countries));
-      setCurrentQuestion(0);
-      setCurrentAnswer('');
-      setCorrectCount(0);
-      setQuizMode('question');
-    },
-    [createQuizList]
-  );
+  const initialQuiz = useCallback((countries: Countries) => {
+    setCurrentQuestion(1);
+    setCurrentAnswer('');
+    setCorrectCount(0);
+    setQuizMode('question');
+  }, []);
 
   const handleAnswer = useCallback((answer: string, isCorrect: boolean) => {
     setCurrentAnswer(answer);
@@ -119,27 +114,28 @@ const useQuiz = () => {
   }, []);
 
   const handleNext = useCallback(() => {
-    if (currentQuestion === QUESTION_COUNT - 1) {
+    if (currentQuestion !== correctCount) {
       setQuizMode('result');
     } else {
       setCurrentQuestion((prev) => prev + 1);
       setCurrentAnswer('');
       setQuizMode('question');
     }
-  }, [currentQuestion]);
+  }, [currentQuestion, correctCount]);
 
   const handleBackTop = useCallback(() => {
     router.push('/');
   }, [router]);
 
   return {
-    quizData,
+    currentQuiz,
     currentQuestion,
     currentAnswer,
     correctCount,
     quizMode,
     handleSelectRegion,
     handleQuizStart,
+    initialCurrentQuiz,
     initialQuiz,
     handleAnswer,
     handleNext,
