@@ -1,4 +1,13 @@
 /**
+ * 頭文字を大文字に変換
+ * @param {string} str 文字列
+ * @returns {string} 頭文字を大文字に変換した文字列
+ */
+const capitalize = (str: string) => {
+  return str.slice(0, 1).toLocaleUpperCase() + str.slice(1);
+};
+
+/**
  * 乱数生成
  * @param {number} min 最小値
  * @param {number} max 最大値
@@ -54,4 +63,4 @@ const uniq = <T>(array: T[]) => {
   return Array.from(new Set(array));
 };
 
-export { getRandomNum, getRandomNumList, shuffle, uniq };
+export { capitalize, getRandomNum, getRandomNumList, shuffle, uniq };

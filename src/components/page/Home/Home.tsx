@@ -4,6 +4,7 @@ import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
 import { fonts, colors } from '@/styles/constants';
+import { capitalize } from '@/util/common';
 
 type Props = {
   regions: string[];
@@ -28,15 +29,8 @@ const Home: VFC<Props> = ({ regions }) => {
             id="region-select"
             onChange={handleSelectRegion}
           >
-            {/* typeof window による条件は警告回避のため */}
             {regions.map((region) => (
-              <option
-                key={region}
-                css={typeof window !== 'undefined' && regionSelectOption}
-                value={region}
-              >
-                {region}
-              </option>
+              <option key={region}>{capitalize(region)}</option>
             ))}
           </select>
           <div css={alignCenter}>
