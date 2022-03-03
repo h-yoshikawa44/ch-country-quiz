@@ -7,6 +7,7 @@ import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
 import { breakPoint, fonts, colors } from '@/styles/constants';
 import { Countries } from '@/models/Country';
+import { AnswerStatus } from '@/models/Quiz';
 import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
 
 type Props = {
@@ -48,7 +49,7 @@ const Quiz: VFC<Props> = ({ countries }) => {
         )}
         {(quizMode === 'question' || quizMode === 'solution') && (
           <div>
-            {currentQuiz.questionFlag && (
+            {currentQuiz?.questionFlag && (
               <p css={questionFlagBlock}>
                 <Image
                   src={currentQuiz.questionFlag}
@@ -57,10 +58,10 @@ const Quiz: VFC<Props> = ({ countries }) => {
                 />
               </p>
             )}
-            <p css={cardText}>{currentQuiz.text}</p>
+            <p css={cardText}>{currentQuiz?.text}</p>
             <div css={answerBlock}>
-              {currentQuiz.answers.map((answer, index) => {
-                let answerStatus;
+              {currentQuiz?.answers.map((answer, index) => {
+                let answerStatus: AnswerStatus;
                 if (answer.isCorrect) {
                   answerStatus = 'correct';
                 } else if (currentAnswer === answer.text) {
