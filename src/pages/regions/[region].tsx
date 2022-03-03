@@ -37,7 +37,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   regions.unshift('all');
 
   const paths = regions.map((region) => {
-    return { params: { region: region.toLocaleLowerCase() } };
+    return { params: { region: region?.toLocaleLowerCase() } };
   });
   return {
     paths,
@@ -46,12 +46,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const region = params.region as string;
+  const region = params?.region as string;
   let countries;
   if (region === 'all') {
     countries = await getCountriesAll();
   } else {
-    countries = await getCountriesByRegion(params.region as string);
+    countries = await getCountriesByRegion(params?.region as string);
   }
 
   return {
