@@ -16,7 +16,7 @@ const Home: VFC<Props> = ({ regions }) => {
         <title>Country quiz</title>
         <meta
           name="description"
-          content="devChallenges.io - Country quiz | by h-yoshikawa44"
+          content="devChallenges.io(legacy) - Country quiz | by h-yoshikawa44"
         />
       </Head>
       <HomePage regions={regions} />
