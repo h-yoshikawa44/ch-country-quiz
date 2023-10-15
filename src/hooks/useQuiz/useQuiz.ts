@@ -97,7 +97,7 @@ const useQuiz = () => {
     [getQuiz],
   );
 
-  const initialQuiz = useCallback((countries: Countries) => {
+  const initialQuiz = useCallback(() => {
     setCurrentQuestion(1);
     setCurrentAnswer('');
     setCorrectCount(0);

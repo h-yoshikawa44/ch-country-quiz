@@ -31,8 +31,8 @@ const Quiz: FC<Props> = ({ countries }) => {
 
   // クイズ初期化
   useEffect(() => {
-    initialQuiz(countries);
-  }, [countries, initialQuiz]);
+    initialQuiz();
+  }, [initialQuiz]);
 
   // 1問ごとにクイズ生成
   useEffect(() => {
