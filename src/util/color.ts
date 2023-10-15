@@ -8,7 +8,7 @@ import { color } from 'csx';
  */
 export const createRGBAColor = (
   colorValue: string,
-  alpha: string | number = 0
+  alpha: string | number = 0,
 ): string => {
   return color(colorValue).fade(alpha).toString();
 };
@@ -23,7 +23,7 @@ export const createRGBAColor = (
 export const createDarkenColor = (
   colorValue: string,
   darkenValue: number | string = 0,
-  relative: boolean = false
+  relative: boolean = false,
 ): string => {
   return color(colorValue).darken(darkenValue, relative).toHexString();
 };

@@ -31,8 +31,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     new Set(
       countrys.map((country) => {
         return country.region;
-      })
-    )
+      }),
+    ),
   ).sort();
   regions.unshift('all');
 

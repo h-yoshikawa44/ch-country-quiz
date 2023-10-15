@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const regions = uniq(
     countries.map((country) => {
       return country.region;
-    })
+    }),
   ).sort();
   regions.unshift('all');
 
