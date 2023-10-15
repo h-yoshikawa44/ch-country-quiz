@@ -14,7 +14,7 @@ export const breakPoint = {
   lg,
   xl,
   custom,
-};
+} as const;
 
 // 色
 const gray = '#f2f2f2';
@@ -45,4 +45,15 @@ export const colors = {
   secondary,
   correct,
   wrong,
-};
+} as const;
+
+// 色の変化
+const buttonDarken = 0.15;
+const buttonTextAlpha = 0.8;
+const buttonBorderAlpha = 0.7;
+
+export const colorRatios = {
+  buttonDarken,
+  buttonTextAlpha,
+  buttonBorderAlpha,
+} as const;

@@ -64,7 +64,7 @@ Other major libraries
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky-universal](https://github.com/sindresorhus/ky-universal)
-- [csx](https://github.com/typestyle/csx)
+- [polished](https://polished.js.org/)
 - [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 
 ※Regarding the REST COUNTRIES API, the assignment guide said it was https://restcountries.eu/, but I heard that it has become a subscription API, so I used the open source version, https://restcountries.com/.
