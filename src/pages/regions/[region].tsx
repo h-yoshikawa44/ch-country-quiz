@@ -17,7 +17,7 @@ const Quiz: FC<Props> = ({ countries }) => {
         <title>Quiz - Country quiz</title>
         <meta
           name="description"
-          content="devChallenges.io - Country quiz - Quiz | by h-yoshikawa44"
+          content="devChallenges.io(legacy) - Country quiz - Quiz | by h-yoshikawa44"
         />
       </Head>
       <RegionQuiz countries={countries} />
