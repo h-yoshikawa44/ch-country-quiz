@@ -53,9 +53,10 @@ const Quiz: FC<Props> = ({ countries }) => {
             {currentQuiz?.questionFlag && (
               <p css={questionFlagBlock}>
                 <Image
+                  css={flagImage}
                   src={currentQuiz.questionFlag}
                   alt="flag"
-                  layout="fill"
+                  fill
                 />
               </p>
             )}
@@ -134,6 +135,10 @@ const questionFlagBlock = css`
   @media (max-width: ${breakPoint.sm - 1}px) {
     margin-bottom: 16px;
   }
+`;
+
+const flagImage = css`
+  object-fit: cover;
 `;
 
 const answerBlock = css`
