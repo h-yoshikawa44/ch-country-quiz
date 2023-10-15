@@ -5,7 +5,8 @@ import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButt
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 import { Countries } from '@/models/Country';
 import { AnswerStatus } from '@/models/Quiz';
 import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
@@ -113,7 +114,7 @@ const Quiz: FC<Props> = ({ countries }) => {
 };
 
 const cardText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 24px;
   font-weight: bold;
   line-height: 36px;
@@ -163,7 +164,7 @@ const resultsTextAlignCenter = css`
 `;
 
 const resultsTitle = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 48px;
   font-weight: bold;
   line-height: 72px;
@@ -171,7 +172,7 @@ const resultsTitle = css`
 `;
 
 const resultsText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 18px;
   font-weight: normal;
   line-height: 27px;

@@ -16,15 +16,6 @@ export const breakPoint = {
   custom,
 };
 
-// フォント
-const poppins = 'Poppins, sans-serif';
-const montserrat = 'Montserrat, sans-serif';
-
-export const fonts = {
-  poppins,
-  montserrat,
-};
-
 // 色
 const gray = '#f2f2f2';
 const white = '#fff';

@@ -2,7 +2,8 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { CheckCircleOutline } from '@emotion-icons/material-rounded/CheckCircleOutline';
 import { HighlightOff } from '@emotion-icons/material-rounded/HighlightOff';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 import { createRGBAColor } from '@/util/color';
 import { QuizMode, AnswerStatus } from '@/models/Quiz';
 
@@ -54,7 +55,7 @@ const answerButton = css`
   align-items: center;
   width: 100%;
   padding: 8px 12px;
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;

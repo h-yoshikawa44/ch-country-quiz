@@ -1,6 +1,7 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 
 type Props = ComponentPropsWithRef<'header'>;
 
@@ -13,7 +14,7 @@ const Header: FC<Props> = ({ ...props }) => {
 };
 
 const headerText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 36px;
   font-weight: bold;
   line-height: 54px;

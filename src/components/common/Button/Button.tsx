@@ -1,7 +1,8 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { createRGBAColor, createDarkenColor } from '@/util/color';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 
 type Variant = 'contained' | 'outlined';
 
@@ -19,7 +20,7 @@ const Button: FC<Props> = ({ variant = 'contained', children, ...props }) => {
 
 const button = css`
   padding: 16px 32px;
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 18px;
   font-weight: bold;
   line-height: 27px;

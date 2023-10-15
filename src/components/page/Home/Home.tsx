@@ -3,7 +3,8 @@ import { css } from '@emotion/react';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 import { capitalize } from '@/util/common';
 
 type Props = {
@@ -43,7 +44,7 @@ const Home: FC<Props> = ({ regions }) => {
 };
 
 const cardTextDescription = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 18px;
   font-weight: bold;
   line-height: 28px;
@@ -57,7 +58,7 @@ const formLayout = css`
 `;
 
 const cardText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 24px;
   font-weight: bold;
   line-height: 36px;
