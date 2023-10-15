@@ -86,19 +86,19 @@ This application/site was created as a submission to a [DevChallenges](https://l
 
 <!-- Example: -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [yarn](https://yarnpkg.com/)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone git@github.com:h-yoshikawa44/country-quiz.git
+git clone git@github.com:h-yoshikawa44/country-quiz.git
 or
-$ git clone https://github.com/h-yoshikawa44/country-quiz.git
+git clone https://github.com/h-yoshikawa44/country-quiz.git
 
 # Install dependencies
-$ yarn install
+npm install
 
 # Run the app
-$ yarn dev
+npm run dev
 ```
 
 ## learned/improved
