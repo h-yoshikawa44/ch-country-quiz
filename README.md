@@ -55,17 +55,17 @@ There are two types of quizzes as follows
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 Base
-- [Node.js](https://nodejs.org/)：14.19.0
-- [TypeScript](https://www.typescriptlang.org/)：4.5.4
-- [React](https://reactjs.org/)：17.0.2
-- [Next.js](https://nextjs.org/)：12.0.7
+- [Node.js](https://nodejs.org/)：20.8.0
+- [TypeScript](https://www.typescriptlang.org/)：5.2.2
+- [React](https://reactjs.org/)：18.2.0
+- [Next.js](https://nextjs.org/)：13.5.4
 
 Other major libraries
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky-universal](https://github.com/sindresorhus/ky-universal)
-- [csx](https://github.com/typestyle/csx)
-- [focus-visible](https://github.com/WICG/focus-visible)
+- [polished](https://polished.js.org/)
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 
 ※Regarding the REST COUNTRIES API, the assignment guide said it was https://restcountries.eu/, but I heard that it has become a subscription API, so I used the open source version, https://restcountries.com/.
 
@@ -86,19 +86,19 @@ This application/site was created as a submission to a [DevChallenges](https://l
 
 <!-- Example: -->
 
-To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [yarn](https://yarnpkg.com/)) installed on your computer. From your command line:
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](https://www.npmjs.com/)) installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
-$ git clone git@github.com:h-yoshikawa44/country-quiz.git
+git clone git@github.com:h-yoshikawa44/country-quiz.git
 or
-$ git clone https://github.com/h-yoshikawa44/country-quiz.git
+git clone https://github.com/h-yoshikawa44/country-quiz.git
 
 # Install dependencies
-$ yarn install
+npm install
 
 # Run the app
-$ yarn dev
+npm run dev
 ```
 
 ## learned/improved

@@ -16,18 +16,18 @@ const quizCard = css`
   background-color: ${colors.white};
   border-radius: 24px;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     width: 100%;
     min-width: initial;
   }
 
-  @media (max-width: ${breakPoint.custom - 1}px) {
+  @media (width < ${breakPoint.custom}px) {
     padding: 32px;
   }
 `;
 
 const quizCardImage = css`
-  @media (min-width: ${breakPoint.custom}px) {
+  @media (width >= ${breakPoint.custom}px) {
     position: relative;
 
     &::before {

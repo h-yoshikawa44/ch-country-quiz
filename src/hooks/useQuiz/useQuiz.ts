@@ -18,7 +18,7 @@ const useQuiz = () => {
     (e: ChangeEvent<HTMLSelectElement>) => {
       setRegion(e.target.value.toLocaleLowerCase());
     },
-    []
+    [],
   );
 
   const handleQuizStart = useCallback(
@@ -26,7 +26,7 @@ const useQuiz = () => {
       e.preventDefault();
       router.push(`regions/${region}`);
     },
-    [region, router]
+    [region, router],
   );
 
   const createCapitalAnswerList = useCallback(
@@ -40,7 +40,7 @@ const useQuiz = () => {
         } as Answer;
       });
     },
-    []
+    [],
   );
 
   const createNameAnswerList = useCallback(
@@ -52,7 +52,7 @@ const useQuiz = () => {
         } as Answer;
       });
     },
-    []
+    [],
   );
 
   const getQuiz = useCallback(
@@ -66,7 +66,7 @@ const useQuiz = () => {
       const numList = getRandomNumList(
         0,
         countries.length - 1,
-        ANSWER_SELECTION_COUNT
+        ANSWER_SELECTION_COUNT,
       );
       const questionNo = getRandomNum(0, 1);
       if (questionNo === 0) {
@@ -87,17 +87,17 @@ const useQuiz = () => {
 
       return question;
     },
-    [createCapitalAnswerList, createNameAnswerList]
+    [createCapitalAnswerList, createNameAnswerList],
   );
 
   const initialCurrentQuiz = useCallback(
     (countries: Countries) => {
       setCurrentQuiz(getQuiz(countries));
     },
-    [getQuiz]
+    [getQuiz],
   );
 
-  const initialQuiz = useCallback((countries: Countries) => {
+  const initialQuiz = useCallback(() => {
     setCurrentQuestion(1);
     setCurrentAnswer('');
     setCorrectCount(0);

@@ -1,11 +1,12 @@
-import { VFC, useContext, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButton';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
 import { QuizContext } from '@/components/context/QuizContext';
-import { breakPoint, fonts, colors } from '@/styles/constants';
+import { breakPoint, colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 import { Countries } from '@/models/Country';
 import { AnswerStatus } from '@/models/Quiz';
 import { ANSWER_SELECTION_ID_LIST } from '@/constants/quiz';
@@ -14,7 +15,7 @@ type Props = {
   countries: Countries;
 };
 
-const Quiz: VFC<Props> = ({ countries }) => {
+const Quiz: FC<Props> = ({ countries }) => {
   const {
     currentQuiz,
     currentQuestion,
@@ -30,8 +31,8 @@ const Quiz: VFC<Props> = ({ countries }) => {
 
   // クイズ初期化
   useEffect(() => {
-    initialQuiz(countries);
-  }, [countries, initialQuiz]);
+    initialQuiz();
+  }, [initialQuiz]);
 
   // 1問ごとにクイズ生成
   useEffect(() => {
@@ -52,9 +53,10 @@ const Quiz: VFC<Props> = ({ countries }) => {
             {currentQuiz?.questionFlag && (
               <p css={questionFlagBlock}>
                 <Image
+                  css={flagImage}
                   src={currentQuiz.questionFlag}
                   alt="flag"
-                  layout="fill"
+                  fill
                 />
               </p>
             )}
@@ -113,7 +115,7 @@ const Quiz: VFC<Props> = ({ countries }) => {
 };
 
 const cardText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 24px;
   font-weight: bold;
   line-height: 36px;
@@ -130,9 +132,13 @@ const questionFlagBlock = css`
   height: 56px;
   margin-bottom: 24px;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     margin-bottom: 16px;
   }
+`;
+
+const flagImage = css`
+  object-fit: cover;
 `;
 
 const answerBlock = css`
@@ -140,7 +146,7 @@ const answerBlock = css`
   row-gap: 24px;
   margin-top: 32px;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     row-gap: 16px;
     margin-top: 20px;
   }
@@ -163,7 +169,7 @@ const resultsTextAlignCenter = css`
 `;
 
 const resultsTitle = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 48px;
   font-weight: bold;
   line-height: 72px;
@@ -171,7 +177,7 @@ const resultsTitle = css`
 `;
 
 const resultsText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 18px;
   font-weight: normal;
   line-height: 27px;

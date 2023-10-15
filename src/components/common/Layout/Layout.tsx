@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
@@ -6,6 +6,7 @@ import { breakPoint } from '@/styles/constants';
 
 type Props = {
   pageName?: string;
+  children: ReactNode;
 };
 
 const Layout: FC<Props> = ({ pageName, children }) => {
@@ -39,7 +40,7 @@ const contentsBlock = css`
   min-height: 720px;
   margin: 80px 0;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     margin: 40px 0;
   }
 `;
@@ -49,7 +50,7 @@ const container = css`
   padding: 0 4%;
   margin: 0 auto;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     padding: 0 8%;
   }
 `;

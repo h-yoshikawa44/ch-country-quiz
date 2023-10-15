@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import RegionQuiz from '@/components/page/regions/Quiz';
@@ -10,14 +10,14 @@ type Props = {
   countries: Countries;
 };
 
-const Quiz: VFC<Props> = ({ countries }) => {
+const Quiz: FC<Props> = ({ countries }) => {
   return (
     <Fragment>
       <Head>
         <title>Quiz - Country quiz</title>
         <meta
           name="description"
-          content="devChallenges.io - Country quiz - Quiz | by h-yoshikawa44"
+          content="devChallenges.io(legacy) - Country quiz - Quiz | by h-yoshikawa44"
         />
       </Head>
       <RegionQuiz countries={countries} />
@@ -31,8 +31,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     new Set(
       countrys.map((country) => {
         return country.region;
-      })
-    )
+      }),
+    ),
   ).sort();
   regions.unshift('all');
 

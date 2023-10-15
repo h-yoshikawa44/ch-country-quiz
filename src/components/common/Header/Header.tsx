@@ -1,10 +1,11 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { fonts, colors } from '@/styles/constants';
+import { colors } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 
 type Props = ComponentPropsWithRef<'header'>;
 
-const Header: VFC<Props> = ({ ...props }) => {
+const Header: FC<Props> = ({ ...props }) => {
   return (
     <header {...props}>
       <h1 css={headerText}>Country quiz</h1>
@@ -13,7 +14,7 @@ const Header: VFC<Props> = ({ ...props }) => {
 };
 
 const headerText = css`
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 36px;
   font-weight: bold;
   line-height: 54px;

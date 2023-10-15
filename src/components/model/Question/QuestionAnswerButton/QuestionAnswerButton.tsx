@@ -2,8 +2,9 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { CheckCircleOutline } from '@emotion-icons/material-rounded/CheckCircleOutline';
 import { HighlightOff } from '@emotion-icons/material-rounded/HighlightOff';
-import { fonts, colors } from '@/styles/constants';
-import { createRGBAColor } from '@/util/color';
+import { rgba } from 'polished';
+import { colors, colorRatios } from '@/styles/constants';
+import { poppins } from '@/styles/fonts';
 import { QuizMode, AnswerStatus } from '@/models/Quiz';
 
 type Props = Omit<ComponentPropsWithRef<'button'>, 'disabled'> & {
@@ -54,17 +55,15 @@ const answerButton = css`
   align-items: center;
   width: 100%;
   padding: 8px 12px;
-  font-family: ${fonts.poppins};
+  font-family: ${poppins.style.fontFamily};
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
-  /* stylelint-disable-next-line function-name-case */
-  color: ${createRGBAColor(colors.secondary, 0.8)};
+  color: ${rgba(colors.secondary, colorRatios.buttonTextAlpha)};
   text-align: left;
   cursor: pointer;
   background-color: ${colors.white};
-  /* stylelint-disable-next-line function-name-case */
-  border: 2px solid ${createRGBAColor(colors.secondary, 0.7)};
+  border: 2px solid ${rgba(colors.secondary, colorRatios.buttonBorderAlpha)};
   border-radius: 12px;
 
   &:disabled {
@@ -78,7 +77,7 @@ const answerButton = css`
     border: 2px solid ${colors.primary};
   }
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline: none;
   }
 `;

@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import HomePage from '@/components/page/Home';
@@ -9,7 +9,7 @@ type Props = {
   regions: string[];
 };
 
-const Home: VFC<Props> = ({ regions }) => {
+const Home: FC<Props> = ({ regions }) => {
   return (
     <Fragment>
       <Head>
@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const regions = uniq(
     countries.map((country) => {
       return country.region;
-    })
+    }),
   ).sort();
   regions.unshift('all');
 
