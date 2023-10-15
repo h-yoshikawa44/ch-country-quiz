@@ -1,4 +1,4 @@
-import { VFC, Fragment } from 'react';
+import { FC, Fragment } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import RegionQuiz from '@/components/page/regions/Quiz';
@@ -10,7 +10,7 @@ type Props = {
   countries: Countries;
 };
 
-const Quiz: VFC<Props> = ({ countries }) => {
+const Quiz: FC<Props> = ({ countries }) => {
   return (
     <Fragment>
       <Head>

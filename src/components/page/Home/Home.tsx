@@ -1,4 +1,4 @@
-import { VFC, useContext } from 'react';
+import { FC, useContext } from 'react';
 import { css } from '@emotion/react';
 import QuizCard from '@/components/common/QuizCard';
 import Button from '@/components/common/Button';
@@ -10,7 +10,7 @@ type Props = {
   regions: string[];
 };
 
-const Home: VFC<Props> = ({ regions }) => {
+const Home: FC<Props> = ({ regions }) => {
   const { handleSelectRegion, handleQuizStart } = useContext(QuizContext);
 
   return (

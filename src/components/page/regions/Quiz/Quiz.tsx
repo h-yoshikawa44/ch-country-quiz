@@ -1,4 +1,4 @@
-import { VFC, useContext, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import QuestionAnswerButton from '@/components/model/Question/QuestionAnswerButton';
@@ -14,7 +14,7 @@ type Props = {
   countries: Countries;
 };
 
-const Quiz: VFC<Props> = ({ countries }) => {
+const Quiz: FC<Props> = ({ countries }) => {
   const {
     currentQuiz,
     currentQuestion,

@@ -1,10 +1,10 @@
-import { VFC, ComponentPropsWithRef } from 'react';
+import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { fonts, colors } from '@/styles/constants';
 
 type Props = ComponentPropsWithRef<'header'>;
 
-const Header: VFC<Props> = ({ ...props }) => {
+const Header: FC<Props> = ({ ...props }) => {
   return (
     <header {...props}>
       <h1 css={headerText}>Country quiz</h1>

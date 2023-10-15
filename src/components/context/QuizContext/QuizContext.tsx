@@ -1,9 +1,13 @@
-import { FC, createContext } from 'react';
+import { FC, ReactNode, createContext } from 'react';
 import useQuiz from '@/hooks/useQuiz';
 
 const QuizContext = createContext({} as ReturnType<typeof useQuiz>);
 
-const QuizProvider: FC = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+const QuizProvider: FC<Props> = ({ children }) => {
   const {
     currentQuiz,
     currentQuestion,

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import { css } from '@emotion/react';
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
@@ -6,6 +6,7 @@ import { breakPoint } from '@/styles/constants';
 
 type Props = {
   pageName?: string;
+  children: ReactNode;
 };
 
 const Layout: FC<Props> = ({ pageName, children }) => {
