@@ -132,7 +132,7 @@ const questionFlagBlock = css`
   height: 56px;
   margin-bottom: 24px;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     margin-bottom: 16px;
   }
 `;
@@ -146,7 +146,7 @@ const answerBlock = css`
   row-gap: 24px;
   margin-top: 32px;
 
-  @media (max-width: ${breakPoint.sm - 1}px) {
+  @media (width < ${breakPoint.sm}px) {
     row-gap: 16px;
     margin-top: 20px;
   }

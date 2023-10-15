@@ -79,7 +79,7 @@ const answerButton = css`
     border: 2px solid ${colors.primary};
   }
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline: none;
   }
 `;

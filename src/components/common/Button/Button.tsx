@@ -28,7 +28,7 @@ const button = css`
   border: none;
   border-radius: 12px;
 
-  &:focus:not(.focus-visible) {
+  &:focus:not(:focus-visible) {
     outline: none;
   }
 `;
