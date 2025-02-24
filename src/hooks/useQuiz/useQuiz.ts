@@ -58,7 +58,7 @@ const useQuiz = () => {
   const getQuiz = useCallback(
     (countries: Countries) => {
       // クイズ生成
-      let question: Question = {
+      const question: Question = {
         text: '',
         questionFlag: '',
         answers: [],

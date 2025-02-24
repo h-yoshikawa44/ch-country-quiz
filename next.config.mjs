@@ -5,8 +5,11 @@ const nextConfig = {
     emotion: true,
   },
   images: {
-    domains: ['flagcdn.com'],
+    remotePatterns: [{
+      protocol: 'https',
+      hostname: 'flagcdn.com'
+    }],
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

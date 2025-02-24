@@ -25,7 +25,7 @@ const getRandomNum = (min: number, max: number) =>
  */
 const getRandomNumList = (min: number, max: number, count: number) => {
   let residue = count;
-  let numList: number[] = [];
+  const numList: number[] = [];
   while (residue > 0) {
     const num = getRandomNum(min, max);
 
@@ -45,7 +45,7 @@ const getRandomNumList = (min: number, max: number, count: number) => {
  * @returns {[T]} シャッフル後の配列
  */
 const shuffle = <T>(array: T[]) => {
-  let arr = array;
+  const arr = array;
   for (let i = arr.length; 1 < i; i--) {
     const k = Math.floor(Math.random() * i);
     [arr[k], arr[i - 1]] = [arr[i - 1], arr[k]];
