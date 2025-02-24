@@ -5,11 +5,10 @@ import Footer from '@/components/common/Footer';
 import { breakPoint } from '@/styles/constants';
 
 type Props = {
-  pageName?: string;
   children: ReactNode;
 };
 
-const Layout: FC<Props> = ({ pageName, children }) => {
+const Layout: FC<Props> = ({ children }) => {
   return (
     <div css={[globalBackGround, globalLayout]}>
       <div css={contentsBlock}>

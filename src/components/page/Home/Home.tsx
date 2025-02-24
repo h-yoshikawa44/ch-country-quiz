@@ -73,10 +73,6 @@ const regionSelect = css`
   border-radius: 8px;
 `;
 
-const regionSelectOption = css`
-  text-transform: capitalize;
-`;
-
 const alignCenter = css`
   text-align: center;
 `;
