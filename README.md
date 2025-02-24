@@ -3,7 +3,7 @@
 <h1 align="center">Country quiz</h1>
 
 <div align="center">
-   Solution for a challenge from  <a href="http://legacy.devchallenges.io" target="_blank">Devchallenges.io</a>.
+   Solution for a challenge from Devchallenges.io.
 </div>
 
 <div align="center">
@@ -11,16 +11,11 @@
     <a href="http://ch-country-quiz.vercel.app/">
       Demo
     </a>
-    <span> | </span>
-    <a href="https://legacy.devchallenges.io/solutions/DgZ6ich7Qg4s9mZo7rnZ">
-      Solution
-    </a>
-    <span> | </span>
-    <a href="https://legacy.devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8">
-      Challenge
-    </a>
   </h3>
 </div>
+
+*The site is now closed, but this assignment was originally posted at `https://legacy.devchallenges.io/solutions/DgZ6ich7Qg4s9mZo7rnZ`.  
+（My assignment submission page at the time: `https://legacy.devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8`.）
 
 <!-- TABLE OF CONTENTS -->
 
@@ -61,11 +56,11 @@ Base
 - [Next.js](https://nextjs.org/)：15.1.7
 
 Other major libraries
+- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
 - [ky-universal](https://github.com/sindresorhus/ky-universal)
 - [polished](https://polished.js.org/)
-- [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 
 ※Regarding the REST COUNTRIES API, the assignment guide said it was https://restcountries.eu/, but I heard that it has become a subscription API, so I used the open source version, https://restcountries.com/.
 
@@ -73,7 +68,7 @@ Other major libraries
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-This application/site was created as a submission to a [DevChallenges](https://legacy.devchallenges.io/challenges) challenge. The [challenge](https://legacy.devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories.
+This application/site was created as a submission to a DevChallenges challenge. The challenge was to build an application to complete the given user stories.
 
 - [x] User story: I can see at least 2 types of questions: a city is the capital of.. or a flag belong to country..
 - [x] User story: I can see select an answer
@@ -116,6 +111,6 @@ npm run dev
 
 ## Contact
 
-- Website：[h-yoshikawa44.com](https://h-yoshikawa44.com)
-- GitHub：[@h-yoshikawa44](https://github.com/h-yoshikawa44)
-- Twitter：[@yoshi44_lion](https://twitter.com/yoshi44_lion)
+- Website: [h-yoshikawa44.com](https://h-yoshikawa44.com)
+- GitHub: [@h-yoshikawa44](https://github.com/h-yoshikawa44)
+- X: [@yoshi44_lion](https://x.com/yoshi44_lion)
