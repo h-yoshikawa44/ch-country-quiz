@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="http://ch-country-quiz.vercel.app/">
+    <a href="https://ch-country-quiz-hitomi-yoshikawas-projects.vercel.app/">
       Demo
     </a>
   </h3>
