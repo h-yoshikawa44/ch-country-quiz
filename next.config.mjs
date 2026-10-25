@@ -7,7 +7,7 @@ const nextConfig = {
   images: {
     remotePatterns: [{
       protocol: 'https',
-      hostname: 'flagcdn.com'
+      hostname: 'flags.restcountries.com'
     }],
   },
 };
