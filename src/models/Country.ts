@@ -1,57 +1,73 @@
 export type CountryName = {
-  name: {
+  names: {
     common: string;
     official: string;
-    nativeName: {
-      [key: string]: {
-        official: string;
-        common: string;
-      };
-    };
   };
 };
 
-export type CountryFrags = {
-  flags: {
-    png: string;
-    svg: string;
+export type CountryFlag = {
+  flag: {
+    url_png: string;
+    url_svg: string;
   };
 };
 
 export type CountryCapital = {
-  capital: string[];
+  capitals: {
+    name: string;
+  }[];
 };
 
 export type CountryRegion = {
   region?: string;
 };
 
-// 前提：レスポンスフィルター name, flags, capital, （任意：region）
+// 前提：レスポンスフィルター names.common, names.official, flag.url_png, flag.url_svg, capitals.name, （任意：region）
 export type Country = CountryName &
-  CountryFrags &
+  CountryFlag &
   CountryCapital &
   CountryRegion;
 
 export type Countries = Country[];
+
+export type CountriesResponse = {
+  data: {
+    objects: unknown[];
+    meta: {
+      total: number;
+      count: number;
+      limit: number;
+      offset: number;
+      more: boolean;
+    };
+  };
+};
 
 // ロジックで使用するもののみチェック
 const isCountry = (arg: unknown): arg is Country => {
   const c = arg as Country;
 
   return (
-    typeof c.name.common === 'string' &&
-    typeof c.name.official === 'string' &&
-    typeof c.flags.png === 'string' &&
-    typeof c.flags.svg === 'string' &&
-    c.capital.every((ca) => typeof ca === 'string') &&
+    typeof c.names?.common === 'string' &&
+    typeof c.names?.official === 'string' &&
+    typeof c.flag?.url_png === 'string' &&
+    typeof c.flag?.url_svg === 'string' &&
+    Array.isArray(c.capitals) &&
+    c.capitals.every((ca) => typeof ca.name === 'string') &&
     (typeof c.region === 'undefined' || typeof c.region === 'string')
   );
 };
 
 const isCountries = (args: unknown): args is Countries => {
-  const cs = args as Countries;
-
-  return cs.every((c) => isCountry(c));
+  return Array.isArray(args) && args.every((c) => isCountry(c));
 };
 
-export { isCountry, isCountries };
+const isCountriesResponse = (arg: unknown): arg is CountriesResponse => {
+  const r = arg as CountriesResponse;
+
+  return (
+    Array.isArray(r?.data?.objects) && typeof r?.data?.meta?.more === 'boolean'
+  );
+};
+
+export { isCountry, isCountries, isCountriesResponse };
