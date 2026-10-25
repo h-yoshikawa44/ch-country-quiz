@@ -1,4 +1,4 @@
-import ky, { Options } from 'ky-universal';
+import ky, { Options } from 'ky';
 import { DEFAULT_API_OPTIONS } from '@/config/ky';
 import { Countries, isCountries, isCountriesResponse } from '@/models/Country';
 

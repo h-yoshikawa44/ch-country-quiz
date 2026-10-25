@@ -1,4 +1,4 @@
-import { Options } from 'ky-universal';
+import { Options } from 'ky';
 
 export const DEFAULT_API_OPTIONS: Options = {
   prefix: 'https://api.restcountries.com/countries',

@@ -1,4 +1,4 @@
-import { Options } from 'ky-universal';
+import { Options } from 'ky';
 import fetchCountries from '@/domains/fetchCountries';
 
 const getCountriesAll = async (options?: Options) => {
