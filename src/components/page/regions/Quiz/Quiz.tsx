@@ -95,7 +95,7 @@ const Quiz: FC<Props> = ({ countries }) => {
         {quizMode === 'result' && (
           <div css={resultsLayout}>
             <p css={resultsImageBlock}>
-              <Image src="/undraw_winners.svg" alt="" layout="fill" />
+              <Image src="/undraw_winners.svg" alt="" fill />
             </p>
             <div css={resultsTextAlignCenter}>
               <p css={resultsTitle}>Results</p>
