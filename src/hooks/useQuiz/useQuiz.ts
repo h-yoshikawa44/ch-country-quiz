@@ -33,9 +33,10 @@ const useQuiz = () => {
     (countries: Countries, numList: number[]) => {
       return numList.map((num, index) => {
         return {
-          text: countries[num].capital[0]
-            ? countries[num].capital.join(', ')
-            : '（No Capital）',
+          text:
+            countries[num].capitals.length > 0
+              ? countries[num].capitals.map((c) => c.name).join(', ')
+              : '（No Capital）',
           isCorrect: index === 0 ? true : false,
         } as Answer;
       });
@@ -47,7 +48,7 @@ const useQuiz = () => {
     (countries: Countries, numList: number[]) => {
       return numList.map((num, index) => {
         return {
-          text: countries[num].name.common,
+          text: countries[num].names.common,
           isCorrect: index === 0 ? true : false,
         } as Answer;
       });
@@ -73,7 +74,7 @@ const useQuiz = () => {
         // 首都を問う問題
         const answerList = createCapitalAnswerList(countries, numList);
         question.text = `${
-          countries[numList[0]].name.common
+          countries[numList[0]].names.common
         } is the capital of`;
         question.questionFlag = '';
         question.answers = shuffle(answerList);
@@ -81,7 +82,7 @@ const useQuiz = () => {
         // 国旗の国名を問う問題
         const answerList = createNameAnswerList(countries, numList);
         question.text = 'Which country does this flag belong to?';
-        question.questionFlag = countries[numList[0]].flags.svg;
+        question.questionFlag = countries[numList[0]].flag.url_svg;
         question.answers = shuffle(answerList);
       }
 
