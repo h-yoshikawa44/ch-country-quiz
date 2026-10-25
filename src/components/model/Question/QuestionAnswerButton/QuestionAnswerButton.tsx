@@ -2,7 +2,7 @@ import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
 import { CheckCircleOutline } from '@emotion-icons/material-rounded/CheckCircleOutline';
 import { HighlightOff } from '@emotion-icons/material-rounded/HighlightOff';
-import { rgba } from 'polished';
+import { TinyColor } from '@ctrl/tinycolor';
 import { colors, colorRatios } from '@/styles/constants';
 import { poppins } from '@/styles/fonts';
 import { QuizMode, AnswerStatus } from '@/models/Quiz';
@@ -59,11 +59,12 @@ const answerButton = css`
   font-size: 18px;
   font-weight: 500;
   line-height: 27px;
-  color: ${rgba(colors.secondary, colorRatios.buttonTextAlpha)};
+  color: ${new TinyColor(colors.secondary).setAlpha(colorRatios.buttonTextAlpha).toRgbString()};
   text-align: left;
   cursor: pointer;
   background-color: ${colors.white};
-  border: 2px solid ${rgba(colors.secondary, colorRatios.buttonBorderAlpha)};
+  border: 2px solid
+    ${new TinyColor(colors.secondary).setAlpha(colorRatios.buttonBorderAlpha).toRgbString()};
   border-radius: 12px;
 
   &:disabled {

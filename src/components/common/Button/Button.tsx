@@ -1,6 +1,6 @@
 import { FC, ComponentPropsWithRef } from 'react';
 import { css } from '@emotion/react';
-import { rgba, darken } from 'polished';
+import { TinyColor } from '@ctrl/tinycolor';
 import { colors, colorRatios } from '@/styles/constants';
 import { poppins } from '@/styles/fonts';
 
@@ -43,15 +43,18 @@ const buttonVariant = (variant: Variant) => {
 
       &:hover,
       &:focus {
-        background-color: ${darken(colorRatios.buttonDarken, colors.primary)};
+        background-color: ${new TinyColor(colors.primary)
+          .darken(colorRatios.buttonDarken)
+          .toHexString()};
       }
     `;
   }
   if (variant === 'outlined') {
     return css`
-      color: ${rgba(colors.secondary, colorRatios.buttonTextAlpha)};
+      color: ${new TinyColor(colors.secondary).setAlpha(colorRatios.buttonTextAlpha).toRgbString()};
       background-color: ${colors.white};
-      border: 2px solid ${rgba(colors.secondary, colorRatios.buttonBorderAlpha)};
+      border: 2px solid
+        ${new TinyColor(colors.secondary).setAlpha(colorRatios.buttonBorderAlpha).toRgbString()};
 
       &:hover,
       &:focus {
