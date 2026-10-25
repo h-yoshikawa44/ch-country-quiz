@@ -48,7 +48,7 @@ export const colors = {
 } as const;
 
 // 色の変化
-const buttonDarken = 0.15;
+const buttonDarken = 15;
 const buttonTextAlpha = 0.8;
 const buttonBorderAlpha = 0.7;
 

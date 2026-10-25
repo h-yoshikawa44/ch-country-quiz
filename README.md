@@ -50,17 +50,17 @@ There are two types of quizzes as follows
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 Base
-- [Node.js](https://nodejs.org/)：24.14.0
-- [TypeScript](https://www.typescriptlang.org/)：5.9.3
-- [React](https://reactjs.org/)：19.2.4
-- [Next.js](https://nextjs.org/)：16.1.6
+- [Node.js](https://nodejs.org/)：24.22.1
+- [TypeScript](https://www.typescriptlang.org/)：6.0.3
+- [React](https://reactjs.org/)：19.3.1
+- [Next.js](https://nextjs.org/)：16.4.2
 
 Other major libraries
 - [postcss-preset-env](https://github.com/csstools/postcss-plugins/tree/main/plugin-packs/postcss-preset-env)
 - [emotion](https://emotion.sh/)
 - [@emotion-icons](https://github.com/emotion-icons/emotion-icons)
-- [ky-universal](https://github.com/sindresorhus/ky-universal)
-- [polished](https://polished.js.org/)
+- [ky](https://github.com/sindresorhus/ky)
+- [@ctrl/tinycolor](https://tinycolor.vercel.app/)
 
 ※Regarding the REST COUNTRIES API, the assignment guide said it was https://restcountries.eu/, but I heard that it has become a subscription API, so I used the open source version, https://restcountries.com/apis/countries.
 

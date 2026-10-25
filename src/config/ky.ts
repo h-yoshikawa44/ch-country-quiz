@@ -1,7 +1,7 @@
-import { Options } from 'ky-universal';
+import { Options } from 'ky';
 
 export const DEFAULT_API_OPTIONS: Options = {
-  prefixUrl: 'https://api.restcountries.com/countries',
+  prefix: 'https://api.restcountries.com/countries',
   headers: {
     Authorization: `Bearer ${process.env.API_KEY}`,
   },
